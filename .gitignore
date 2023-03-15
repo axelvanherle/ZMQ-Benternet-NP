@@ -29,4 +29,7 @@
 # Executables
 *.exe
 *.out
+
+# Self added
+build-ZMQ-Beterner-NP-Desktop_Qt_6_4_2_GCC_64bit-Debug
 *.app
