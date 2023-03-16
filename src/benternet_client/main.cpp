@@ -1,33 +1,58 @@
+#include <QApplication>
+#include <QtWidgets>
+#include <QObject>
+#include <QDebug>
+#include <QInputDialog>
 #include <iostream>
-#include <string>
 #include <zmq.hpp>
-#include <thread>
 
-#define SLEEP_MS(ms) std::this_thread::sleep_for(std::chrono::milliseconds(ms))
+#include "zmqclient.h"
 
-int main(void)
+int main(int argc, char *argv[])
 {
-    std::cout << "test";
+    QApplication app(argc, argv);
 
-    try
+    zmqclient client;
+
+    QWidget window;
+    window.setFixedSize(800, 500);
+    window.setWindowTitle("ZMQ Benternet Application by Axel Vanherle.");
+
+    // Create widgets
+    QLabel* outputLabel = new QLabel("Pushed message:");
+    QLineEdit* inputLineEdit = new QLineEdit();
+    QPushButton* sendButton = new QPushButton("Send");
+
+    QLabel* inputLabel = new QLabel("Subscribed messages:");
+    QPlainTextEdit* receivedTextEdit = new QPlainTextEdit();
+    receivedTextEdit->setReadOnly(true);
+    receivedTextEdit->setMaximumBlockCount(100);
+
+    // Create layout
+    QVBoxLayout* layout = new QVBoxLayout();
+    layout->addWidget(outputLabel);
+    layout->addWidget(inputLineEdit);
+    layout->addWidget(sendButton);
+    layout->addWidget(inputLabel);
+    layout->addWidget(receivedTextEdit);
+
+    window.setLayout(layout);
+
+    QObject::connect(inputLineEdit, &QLineEdit::returnPressed, sendButton, &QPushButton::click);
+    QObject::connect(sendButton, &QPushButton::clicked, [&]()
     {
-        zmq::context_t context(1);
-        zmq::socket_t push(context, ZMQ_PUSH);
-
-        push.connect("tcp://benternet.pxl-ea-ict.be:24041");
-
-        while (push.connected())
+        QString message = inputLineEdit->text();
+        if (message.isEmpty())
         {
-            SLEEP_MS(1000);
-            std::string buffer = "axelvanherle>service>test";
-            push.send(buffer.c_str(), buffer.length());
-            std::cout << "Pushed : " << buffer << std::endl;
+            // Show message box with error
+            QMessageBox::warning(&window, "Error", "Message cannot be empty!");
+            return;
         }
-    }
-    catch (zmq::error_t &ex)
-    {
-        std::cerr << "Caught an exception : " << ex.what();
-    }
+        client.pushMessage(message);
+        qDebug() << "Message sent: " << message;
+        inputLineEdit->clear();
+    });
 
-    return 0;
+    window.show();
+    return app.exec();
 }

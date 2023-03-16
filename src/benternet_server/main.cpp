@@ -13,7 +13,7 @@ int main(void)
 
         subscribe.connect("tcp://benternet.pxl-ea-ict.be:24042");
 
-        std::string topic = "axelvanherle>service>";
+        std::string topic = "axelvanherle>service?>";
         subscribe.setsockopt(ZMQ_SUBSCRIBE, topic.c_str(), topic.length());
 
         zmq::message_t *msg = new zmq::message_t();
