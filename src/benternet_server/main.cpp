@@ -1,7 +1,3 @@
-#include <iostream>
-#include <string>
-#include <zmq.hpp>
-
 #include "zmqserver.h"
 
 int main(void)
