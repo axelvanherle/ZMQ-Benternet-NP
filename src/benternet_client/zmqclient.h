@@ -1,9 +1,7 @@
 #ifndef ZMQCLIENT_H
 #define ZMQCLIENT_H
 
-#include <QCoreApplication>
 #include <QObject>
-#include <QDebug>
 #include <QString>
 #include <zmq.hpp>
 
@@ -15,6 +13,7 @@ public:
     explicit zmqclient(QObject *parent = nullptr);
     virtual ~zmqclient();
     void pushMessage(QString&);
+    QString receiveMessage(void);
 
 private:
     zmq::context_t *context = new zmq::context_t(1);

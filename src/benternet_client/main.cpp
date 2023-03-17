@@ -19,23 +19,30 @@ int main(int argc, char *argv[])
     window.setWindowTitle("ZMQ Benternet Application by Axel Vanherle.");
 
     // Create widgets
-    QLabel* outputLabel = new QLabel("Pushed message:");
+    QLabel* outputLabel = new QLabel("Message input:");
     QLineEdit* inputLineEdit = new QLineEdit();
-    QPushButton* sendButton = new QPushButton("Send");
-
     QLabel* inputLabel = new QLabel("Subscribed messages:");
     QPlainTextEdit* receivedTextEdit = new QPlainTextEdit();
     receivedTextEdit->setReadOnly(true);
     receivedTextEdit->setMaximumBlockCount(100);
 
+    QPushButton* sendButton = new QPushButton("Send Message");
+    QPushButton* jokeButton = new QPushButton("Tell Me a Joke!");
+    QLabel* jokeSendLabel = new QLabel("or");
+    jokeSendLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    jokeSendLabel->setFixedWidth(15);
+    QHBoxLayout* buttonLayout = new QHBoxLayout();
+    buttonLayout->addWidget(sendButton);
+    buttonLayout->addWidget(jokeSendLabel);
+    buttonLayout->addWidget(jokeButton);
+
     // Create layout
     QVBoxLayout* layout = new QVBoxLayout();
     layout->addWidget(outputLabel);
     layout->addWidget(inputLineEdit);
-    layout->addWidget(sendButton);
+    layout->addLayout(buttonLayout);
     layout->addWidget(inputLabel);
     layout->addWidget(receivedTextEdit);
-
     window.setLayout(layout);
 
     QObject::connect(inputLineEdit, &QLineEdit::returnPressed, sendButton, &QPushButton::click);
@@ -44,13 +51,19 @@ int main(int argc, char *argv[])
         QString message = inputLineEdit->text();
         if (message.isEmpty())
         {
-            // Show message box with error
             QMessageBox::warning(&window, "Error", "Message cannot be empty!");
             return;
         }
+        inputLineEdit->clear();
         client.pushMessage(message);
         qDebug() << "Message sent: " << message;
-        inputLineEdit->clear();
+    });
+
+    QObject::connect(jokeButton, &QPushButton::clicked, [&]()
+    {
+        QString message = "joke";
+        client.pushMessage(message);
+        qDebug() << "[JOKE] Message sent:" << message;
     });
 
     window.show();
