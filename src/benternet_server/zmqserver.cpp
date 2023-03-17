@@ -3,8 +3,7 @@
 zmqserver::zmqserver()
 {
     subSocket->connect("tcp://benternet.pxl-ea-ict.be:24042");
-    std::string topic = "axelvanherle>service?>";
-    subSocket->setsockopt(ZMQ_SUBSCRIBE, topic.c_str(), topic.length());
+    subSocket->setsockopt(ZMQ_SUBSCRIBE, subscribedTopic.c_str(), subscribedTopic.length());
 }
 
 zmqserver::~zmqserver()
@@ -22,6 +21,8 @@ void zmqserver::receiveMessages()
         {
             subSocket->recv(zmqBuffer);
             std::string received_msg(static_cast<char*>(zmqBuffer->data()), zmqBuffer->size());
+
+            received_msg = received_msg.substr(subscribedTopic.length());
             std::cout << "Received message: " << received_msg << std::endl;
         }
     }
