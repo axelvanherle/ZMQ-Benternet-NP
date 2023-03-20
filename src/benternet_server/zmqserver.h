@@ -17,7 +17,7 @@ private:
     zmq::message_t *zmqBuffer  = new zmq::message_t();
     zmq::socket_t *subSocket = new zmq::socket_t(*context, ZMQ_SUB);
 
-    std::string subscribedTopic = "axelvanherle>service?>";
+    std::string subscribeTopic = "axelvanherle>service?>";
     std::string pushTopic = "axelvanherle>service!>";
 };
 
