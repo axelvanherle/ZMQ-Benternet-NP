@@ -5,7 +5,6 @@
 #include <QString>
 #include <zmq.hpp>
 
-
 class zmqclient : public QObject
 {
     Q_OBJECT

@@ -1,33 +1,27 @@
 #include "zmqserver.h"
 
-zmqserver::zmqserver()
+zmqserver::zmqserver(QObject *parent) : QObject(parent)
 {
-    subSocket->connect("tcp://benternet.pxl-ea-ict.be:24042");
     subSocket->setsockopt(ZMQ_SUBSCRIBE, subscribeTopic.c_str(), subscribeTopic.length());
+    subSocket->connect("tcp://benternet.pxl-ea-ict.be:24042");
+
+    pushSocket->connect("tcp://benternet.pxl-ea-ict.be:24041");
 }
 
 zmqserver::~zmqserver()
 {
     delete context;
     delete zmqBuffer;
+    delete pushSocket;
     delete subSocket;
 }
 
-void zmqserver::receiveMessages()
+void zmqserver::pushMessage(QString& message)
 {
-    try
-    {
-        while (subSocket->connected())
-        {
-            subSocket->recv(zmqBuffer);
-            std::string received_msg(static_cast<char*>(zmqBuffer->data()), zmqBuffer->size());
+    message.prepend(pushTopic.c_str());
+    pushSocket->send(message.toStdString().c_str(), message.length());
+}
 
-            received_msg = received_msg.substr(subscribeTopic.length());
-            std::cout << "Received message: " << received_msg << std::endl;
-        }
-    }
-    catch (zmq::error_t &ex)
-    {
-        std::cerr << "Caught an exception : " << ex.what();
-    }
+QString zmqserver::receiveMessage(void)
+{
 }

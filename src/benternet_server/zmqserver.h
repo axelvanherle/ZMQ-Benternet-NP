@@ -1,20 +1,23 @@
 #ifndef ZMQSERVER_H
 #define ZMQSERVER_H
 
-#include <iostream>
-#include <string>
+#include <QObject>
+#include <QString>
 #include <zmq.hpp>
 
-class zmqserver
+class zmqserver : public QObject
 {
+    Q_OBJECT
 public:
-    explicit zmqserver();
+    explicit zmqserver(QObject *parent = nullptr);;
     virtual ~zmqserver();
-    void receiveMessages();
+    void pushMessage(QString&);
+    QString receiveMessage(void);
 
 private:
     zmq::context_t *context = new zmq::context_t(1);
     zmq::message_t *zmqBuffer  = new zmq::message_t();
+    zmq::socket_t *pushSocket = new zmq::socket_t(*context, ZMQ_PUSH);
     zmq::socket_t *subSocket = new zmq::socket_t(*context, ZMQ_SUB);
 
     std::string subscribeTopic = "axelvanherle>service?>";
