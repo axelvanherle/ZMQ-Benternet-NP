@@ -3,6 +3,10 @@
 
 #include <QObject>
 #include <QString>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QDebug>
 #include <zmq.hpp>
 
 class zmqserver : public QObject
@@ -11,6 +15,8 @@ class zmqserver : public QObject
 public:
     explicit zmqserver(QObject *parent = nullptr);;
     virtual ~zmqserver();
+
+    void sendHttpRequest(void);
     void pushMessage(QString&);
     QString receiveMessage(void);
 

@@ -11,6 +11,7 @@ class zmqclient : public QObject
 public:
     explicit zmqclient(QObject *parent = nullptr);
     virtual ~zmqclient();
+
     void pushMessage(QString&);
     QString receiveMessage(void);
 
