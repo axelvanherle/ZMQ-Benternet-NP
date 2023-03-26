@@ -5,6 +5,13 @@ zmqclient::zmqclient(QObject *parent) : QObject(parent)
     subSocket->setsockopt(ZMQ_SUBSCRIBE, subscribeTopic.c_str(), subscribeTopic.length());
     subSocket->connect("tcp://benternet.pxl-ea-ict.be:24042");
 
+    // Get the file descriptor associated with the ZeroMQ socket
+    int fd;
+    size_t size = sizeof(fd);
+    subSocket->getsockopt(ZMQ_FD, &fd, &size);
+    notifier = new QSocketNotifier(fd, QSocketNotifier::Read, this);
+    connect(notifier, SIGNAL(activated(int)), this, SLOT(handleSocketNotification()));
+
     pushSocket->connect("tcp://benternet.pxl-ea-ict.be:24041");
 }
 
@@ -14,6 +21,7 @@ zmqclient::~zmqclient()
     delete zmqBuffer;
     delete pushSocket;
     delete subSocket;
+    delete notifier;
 }
 
 void zmqclient::pushMessage(QString& message)
@@ -22,6 +30,11 @@ void zmqclient::pushMessage(QString& message)
     pushSocket->send(message.toStdString().c_str(), message.length());
 }
 
-QString zmqclient::receiveMessage(void)
+void zmqclient::handleSocketNotification()
 {
+    while (subSocket->recv(zmqBuffer, ZMQ_DONTWAIT))
+    {
+        std::string buffer(static_cast<char*>(zmqBuffer->data()), zmqBuffer->size());
+        emit messageReceived(QString::fromStdString(buffer));
+    }
 }

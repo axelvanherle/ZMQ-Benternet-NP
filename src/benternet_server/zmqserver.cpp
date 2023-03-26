@@ -1,5 +1,4 @@
 #include "zmqserver.h"
-#include <QtNetwork>
 
 zmqserver::zmqserver(QObject *parent) : QObject(parent)
 {

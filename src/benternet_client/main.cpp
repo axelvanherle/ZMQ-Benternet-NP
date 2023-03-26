@@ -63,7 +63,15 @@ int main(int argc, char *argv[])
     {
         QString message = "joke";
         client.pushMessage(message);
+        receivedTextEdit->appendPlainText("You wanted a joke? Well here it is.");
         qDebug() << "[JOKE] Message sent:" << message;
+    });
+
+    QObject::connect(&client, &zmqclient::messageReceived, [&](QString buffer)
+    {
+        std::string received_msg = buffer.toStdString().substr(client.getSubscribeTopicLen());
+        receivedTextEdit->appendPlainText(QString::fromStdString(received_msg));
+        qDebug() << "RECEIVED MESSAGE:" << QString::fromStdString(received_msg);
     });
 
     window.show();

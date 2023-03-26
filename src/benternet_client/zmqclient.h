@@ -3,7 +3,14 @@
 
 #include <QObject>
 #include <QString>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QtNetwork>
+#include <QDebug>
 #include <zmq.hpp>
+
+class QSocketNotifier;
 
 class zmqclient : public QObject
 {
@@ -13,7 +20,21 @@ public:
     virtual ~zmqclient();
 
     void pushMessage(QString&);
-    QString receiveMessage(void);
+
+    int getSubscribeTopicLen(void)
+    {
+        return subscribeTopic.length();
+    }
+    int getPushTopicLen(void)
+    {
+        return pushTopic.length();
+    }
+
+signals:
+    void messageReceived(QString);
+
+private slots:
+    void handleSocketNotification();
 
 private:
     zmq::context_t *context = new zmq::context_t(1);
@@ -23,6 +44,8 @@ private:
 
     std::string subscribeTopic = "axelvanherle>service!>";
     std::string pushTopic = "axelvanherle>service?>";
+
+    QSocketNotifier *notifier;
 };
 
 #endif // ZMQCLIENT_H
