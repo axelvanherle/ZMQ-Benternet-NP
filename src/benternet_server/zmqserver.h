@@ -18,9 +18,17 @@ public:
     explicit zmqserver(QObject *parent = nullptr);
     virtual ~zmqserver();
 
-    void sendHttpRequest(void);
-    void pushMessage(QString&);
-    QString receiveMessage(void);
+    void sendJokeHttpRequest(void);
+    void pushMessage(QString);
+
+    int getSubscribeTopicLen(void)
+    {
+        return subscribeTopic.length();
+    }
+    int getPushTopicLen(void)
+    {
+        return pushTopic.length();
+    }
 
 signals:
     void messageReceived(QString);
