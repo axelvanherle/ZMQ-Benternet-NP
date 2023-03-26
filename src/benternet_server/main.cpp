@@ -14,7 +14,8 @@ int main(int argc, char *argv[])
 
     zmqserver server;
 
-    QObject::connect(&server, &zmqserver::messageReceived, [&](QString buffer){
+    QObject::connect(&server, &zmqserver::messageReceived, [&](QString buffer)
+    {
         qDebug() << "BUFFER:" << buffer;
 
         std::string received_msg = buffer.toStdString().substr(server.getSubscribeTopicLen());
