@@ -14,5 +14,9 @@ int main(int argc, char *argv[])
 
     zmqserver server;
 
+    QObject::connect(&server, &zmqserver::messageReceived, [](QString message){
+        qDebug() << "Received message:" << message;
+    });
+
     return app.exec();
 }

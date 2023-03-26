@@ -9,16 +9,24 @@
 #include <QDebug>
 #include <zmq.hpp>
 
+class QSocketNotifier;
+
 class zmqserver : public QObject
 {
     Q_OBJECT
 public:
-    explicit zmqserver(QObject *parent = nullptr);;
+    explicit zmqserver(QObject *parent = nullptr);
     virtual ~zmqserver();
 
     void sendHttpRequest(void);
     void pushMessage(QString&);
     QString receiveMessage(void);
+
+signals:
+    void messageReceived(QString);
+
+private slots:
+    void handleSocketNotification();
 
 private:
     zmq::context_t *context = new zmq::context_t(1);
@@ -28,6 +36,8 @@ private:
 
     std::string subscribeTopic = "axelvanherle>service?>";
     std::string pushTopic = "axelvanherle>service!>";
+
+    QSocketNotifier *notifier;
 };
 
 #endif // ZMQSERVER_H
