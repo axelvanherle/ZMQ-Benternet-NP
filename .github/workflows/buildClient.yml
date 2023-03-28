@@ -44,3 +44,7 @@ jobs:
         qmake -o Makefile ../benternet_client/benternet_client.pro
     - name: Run make
       run: cd src/build && make
+    - uses: actions/upload-artifact@v3
+      with:
+        name: benternet_client
+        path: src/build/
