@@ -43,4 +43,4 @@ jobs:
         mkdir src/build && cd src/build
         qmake -o Makefile ../benternet_client/benternet_client.pro
     - name: Run make
-      run: make
+      run: cd src/build && make
