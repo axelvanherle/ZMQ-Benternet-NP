@@ -1,0 +1,20 @@
+name: Build Client
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      # Only when changes to either a cpp or h file.
+      - 'src/benternet_client/*.cpp'
+      - 'src/benternet_client/*.h'
+# Dont keep running when a new build is in progress
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: test
+        run: echo test
