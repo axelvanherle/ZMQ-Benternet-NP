@@ -23,6 +23,6 @@ jobs:
       with:
         version: 5.15.2
     - name: qmake
-      run: qmake
+      run: mkdir src/build && qmake -o src/build Makefile src/benternet_client/benternet_client.pro
     - name: make
-      run: make
+      run: make -C src/build
