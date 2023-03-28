@@ -19,7 +19,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build libzmq & cppzmq
-    - run: |
+      run: |
         mkdir libs && cd libs
         git clone https://github.com/zeromq/libzmq.git && git clone https://github.com/zeromq/cppzmq.git
         cd libzmq
