@@ -22,14 +22,12 @@ jobs:
     - run: |
         mkdir libs && cd libs
         git clone https://github.com/zeromq/libzmq.git && git clone https://github.com/zeromq/cppzmq.git
-        
         cd libzmq
         mkdir build
         cd build
         cmake ..
         make -j4 install
         cd ../../
-        
         cd cppzmq
         mkdir build
         cd build
