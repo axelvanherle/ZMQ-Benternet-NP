@@ -48,4 +48,4 @@ private:
     QSocketNotifier *notifier;
 };
 
-#endif // ZMQCLIENT_H
+#endif // ZMQCLIENT_
