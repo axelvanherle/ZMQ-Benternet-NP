@@ -18,11 +18,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: Build libzmq & cppzmq
+    - run: |
+        mkdir libs && cd libs
+        git clone https://github.com/zeromq/libzmq.git && git clone https://github.com/zeromq/cppzmq.git
+        
+        cd libzmq
+        mkdir build
+        cd build
+        cmake ..
+        make -j4 install
+        cd ../../
+        
+        cd cppzmq
+        mkdir build
+        cd build
+        cmake ..
+        make -j4 install
+        cd
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
         version: 5.15.2
-    - name: qmake
+    - name: Run qmake
       run: mkdir src/build && qmake -o src/build Makefile src/benternet_client/benternet_client.pro
-    - name: make
+    - name: Run make
       run: make -C src/build
