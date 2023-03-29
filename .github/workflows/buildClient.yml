@@ -46,12 +46,6 @@ jobs:
         qmake -o Makefile ../benternet_client/benternet_client.pro
     - name: Run make
       run: cd src/build && make
-    - name: create appimage
-      uses: AppImageCrafters/build-appimage@master
-      with:
-        recipe: "./appimage-demo-qt5/AppImageBuilder.yml"
-      env:
-        UPDATE_INFO: gh-releases-zsync|AppImageCrafters|appimage-demo-qt5|latest|*x86_64.AppImage.zsync
     - uses: actions/upload-artifact@v3
       with:
         name: benternet_client
