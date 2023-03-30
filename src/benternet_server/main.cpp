@@ -21,6 +21,11 @@ int main(int argc, char *argv[])
         std::string received_msg = buffer.toStdString().substr(server.getSubscribeTopicLen());
         qDebug() << "RECEIVED MESSAGE:" << QString::fromStdString(received_msg);
 
+        if (received_msg.find("ID") != std::string::npos)
+        {
+            server.giveID();
+        }
+
         if (received_msg.find("joke") != std::string::npos)
         {
             server.sendJokeHttpRequest();

@@ -8,6 +8,7 @@
 #include <QNetworkReply>
 #include <QtNetwork>
 #include <QDebug>
+#include <set>
 #include <zmq.hpp>
 
 class QSocketNotifier;
@@ -20,6 +21,7 @@ public:
     virtual ~zmqserver();
 
     void sendJokeHttpRequest(void);
+    void giveID(void);
     void pushMessage(QString);
 
     int getSubscribeTopicLen(void)
@@ -47,6 +49,7 @@ private:
     std::string pushTopic = "axelvanherle>service!>";
 
     QSocketNotifier *notifier;
+    std::set<int> usedIDs;
 };
 
 #endif // ZMQSERVER_H

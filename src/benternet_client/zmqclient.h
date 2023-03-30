@@ -19,7 +19,8 @@ public:
     explicit zmqclient(QObject *parent = nullptr);
     virtual ~zmqclient();
 
-    void pushMessage(QString&);
+    void firstConnect(void);
+    void pushMessage(QString);
 
     int getSubscribeTopicLen(void)
     {

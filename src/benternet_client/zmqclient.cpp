@@ -2,6 +2,9 @@
 
 zmqclient::zmqclient(QObject *parent) : QObject(parent)
 {
+    pushSocket->connect("tcp://benternet.pxl-ea-ict.be:24041");
+    firstConnect();
+
     subSocket->setsockopt(ZMQ_SUBSCRIBE, subscribeTopic.c_str(), subscribeTopic.length());
     subSocket->connect("tcp://benternet.pxl-ea-ict.be:24042");
 
@@ -11,8 +14,6 @@ zmqclient::zmqclient(QObject *parent) : QObject(parent)
     subSocket->getsockopt(ZMQ_FD, &fd, &size);
     notifier = new QSocketNotifier(fd, QSocketNotifier::Read, this);
     connect(notifier, SIGNAL(activated(int)), this, SLOT(handleSocketNotification()));
-
-    pushSocket->connect("tcp://benternet.pxl-ea-ict.be:24041");
 }
 
 zmqclient::~zmqclient()
@@ -24,7 +25,12 @@ zmqclient::~zmqclient()
     delete notifier;
 }
 
-void zmqclient::pushMessage(QString& message)
+void zmqclient::firstConnect(void)
+{
+    pushMessage(QString("ID"));
+}
+
+void zmqclient::pushMessage(QString message)
 {
     message.prepend(pushTopic.c_str());
     pushSocket->send(message.toStdString().c_str(), message.length());
