@@ -1,4 +1,5 @@
 # ZMQ-Benternet-NP
+A service made by Axel Vanherle
 
 ## Documentation
 Documentation can be found under the `docs` directory.
