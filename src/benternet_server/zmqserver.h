@@ -20,8 +20,8 @@ public:
     explicit zmqserver(QObject *parent = nullptr);
     virtual ~zmqserver();
 
-    void sendJokeHttpRequest(void);
-    void pushMessage(QString);
+    void sendJokeHttpRequest(QString);
+    void pushMessage(QString, QString);
 
     int getSubscribeTopicLen(void)
     {
@@ -46,6 +46,8 @@ private:
 
     std::string subscribeTopic = "axelvanherle>service?>";
     std::string pushTopic = "axelvanherle>service!>";
+
+    QList<int> savedPlayerIDs; // Declare a QList to store the numbers
 
     QSocketNotifier *notifier;
 };

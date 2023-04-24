@@ -18,14 +18,15 @@ int main(int argc, char *argv[])
     {
         qDebug() << "BUFFER:" << buffer;
 
-        std::string received_msg = buffer.toStdString().substr(server.getSubscribeTopicLen());
-        qDebug() << "RECEIVED MESSAGE:" << QString::fromStdString(received_msg);
+        QStringList sections = buffer.split(QRegularExpression("[>?]"));
+        QString playerID = sections[3];
+        QString action = sections[4];
+        qDebug() << "received" << action << "from: " << playerID;
 
-        if (received_msg.find("joke") != std::string::npos)
+        if(action == "joke")
         {
-            server.sendJokeHttpRequest();
+            server.sendJokeHttpRequest(playerID);
         }
-
     });
 
     return app.exec();

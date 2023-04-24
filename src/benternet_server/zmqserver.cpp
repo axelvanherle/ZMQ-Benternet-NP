@@ -24,7 +24,7 @@ zmqserver::~zmqserver()
     delete notifier;
 }
 
-void zmqserver::sendJokeHttpRequest(void)
+void zmqserver::sendJokeHttpRequest(QString playerID)
 {
     // create custom temporary event loop on stack
     QEventLoop eventLoop;
@@ -48,20 +48,21 @@ void zmqserver::sendJokeHttpRequest(void)
         QString setup = jsonObject["setup"].toString();
         QString punchline = jsonObject["punchline"].toString();
 
-        pushMessage(setup + " " + punchline);
+        pushMessage(playerID,setup + " " + punchline);
     }
     else
     {
         //failure
-        pushMessage("Failure");
+        pushMessage(playerID,"Failure");
     }
 
     delete reply;
 }
 
-void zmqserver::pushMessage(QString message)
+void zmqserver::pushMessage(QString playerID, QString message)
 {
-    message.prepend(pushTopic.c_str());
+    message.prepend(pushTopic.c_str() + playerID + ">");
+    qDebug() << message;
     pushSocket->send(message.toStdString().c_str(), message.length());
 }
 
