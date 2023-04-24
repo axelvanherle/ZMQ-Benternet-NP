@@ -21,7 +21,6 @@ public:
     virtual ~zmqserver();
 
     void sendJokeHttpRequest(void);
-    void giveID(void);
     void pushMessage(QString);
 
     int getSubscribeTopicLen(void)
@@ -49,7 +48,6 @@ private:
     std::string pushTopic = "axelvanherle>service!>";
 
     QSocketNotifier *notifier;
-    std::set<int> usedIDs;
 };
 
 #endif // ZMQSERVER_H

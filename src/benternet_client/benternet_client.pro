@@ -19,8 +19,8 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-unix: CONFIG += link_pkgconfig
-unix: PKGCONFIG += cppzmq
+CONFIG += link_pkgconfig
+PKGCONFIG += cppzmq
 
 HEADERS += \
     zmqclient.h

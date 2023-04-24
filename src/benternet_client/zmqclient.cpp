@@ -2,8 +2,13 @@
 
 zmqclient::zmqclient(QObject *parent) : QObject(parent)
 {
+    srand(time(NULL)); // sets the seed value based on current time
+    playerID = std::to_string((rand() % 100000)+1); // Get a random player id
+
+    subscribeTopic.append(playerID + ">");
+    pushTopic.append(playerID + ">");
+
     pushSocket->connect("tcp://benternet.pxl-ea-ict.be:24041");
-    firstConnect();
 
     subSocket->setsockopt(ZMQ_SUBSCRIBE, subscribeTopic.c_str(), subscribeTopic.length());
     subSocket->connect("tcp://benternet.pxl-ea-ict.be:24042");
@@ -23,11 +28,6 @@ zmqclient::~zmqclient()
     delete pushSocket;
     delete subSocket;
     delete notifier;
-}
-
-void zmqclient::firstConnect(void)
-{
-    pushMessage(QString("ID"));
 }
 
 void zmqclient::pushMessage(QString message)

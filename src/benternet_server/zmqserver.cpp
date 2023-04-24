@@ -59,17 +59,6 @@ void zmqserver::sendJokeHttpRequest(void)
     delete reply;
 }
 
-void zmqserver::giveID(void)
-{
-    int newID = 0;
-    while (usedIDs.count(newID) > 0)
-    {
-        newID++;
-    }
-    usedIDs.insert(newID);
-    pushMessage(QString::number(newID));
-}
-
 void zmqserver::pushMessage(QString message)
 {
     message.prepend(pushTopic.c_str());

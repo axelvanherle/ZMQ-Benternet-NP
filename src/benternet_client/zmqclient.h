@@ -1,6 +1,7 @@
 #ifndef ZMQCLIENT_H
 #define ZMQCLIENT_H
 
+#include <cstdlib>
 #include <QObject>
 #include <QString>
 #include <QNetworkAccessManager>
@@ -19,7 +20,6 @@ public:
     explicit zmqclient(QObject *parent = nullptr);
     virtual ~zmqclient();
 
-    void firstConnect(void);
     void pushMessage(QString);
 
     int getSubscribeTopicLen(void)
@@ -45,6 +45,7 @@ private:
 
     std::string subscribeTopic = "axelvanherle>service!>";
     std::string pushTopic = "axelvanherle>service?>";
+    std::string playerID;
 
     QSocketNotifier *notifier;
 };
