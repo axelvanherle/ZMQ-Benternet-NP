@@ -22,6 +22,7 @@ public:
 
     void sendJokeHttpRequest(QString);
     void pushMessage(QString, QString);
+    void checkID(QString);
 
     int getSubscribeTopicLen(void)
     {
@@ -47,7 +48,7 @@ private:
     std::string subscribeTopic = "axelvanherle>service?>";
     std::string pushTopic = "axelvanherle>service!>";
 
-    QList<int> savedPlayerIDs; // Declare a QList to store the numbers
+    QList<QString> playerIDs;
 
     QSocketNotifier *notifier;
 };

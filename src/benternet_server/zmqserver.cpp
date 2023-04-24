@@ -66,6 +66,15 @@ void zmqserver::pushMessage(QString playerID, QString message)
     pushSocket->send(message.toStdString().c_str(), message.length());
 }
 
+void zmqserver::checkID(QString playerID)
+{
+    if (!playerIDs.contains(playerID))
+    {
+        qDebug() << "New player joined!";
+        playerIDs.append(playerID);
+    }
+}
+
 void zmqserver::handleSocketNotification()
 {
     while (subSocket->recv(zmqBuffer, ZMQ_DONTWAIT))

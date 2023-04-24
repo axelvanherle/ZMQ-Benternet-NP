@@ -18,9 +18,12 @@ int main(int argc, char *argv[])
     {
         qDebug() << "BUFFER:" << buffer;
 
-        QStringList sections = buffer.split(QRegularExpression("[>?]"));
-        QString playerID = sections[3];
-        QString action = sections[4];
+        QStringList parsedBuffer = buffer.split(QRegularExpression("[>?]"));
+        QString playerID = parsedBuffer[3];
+        QString action = parsedBuffer[4];
+
+        server.checkID(playerID);
+
         qDebug() << "received" << action << "from: " << playerID;
 
         if(action == "joke")
