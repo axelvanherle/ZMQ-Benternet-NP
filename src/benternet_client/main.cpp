@@ -76,14 +76,15 @@ int main(int argc, char *argv[])
     // Connect joke button
     QObject::connect(jokeButton, &QPushButton::clicked, [&]()
     {
-        QString message = "joke";
-        client.pushMessage(message);
-        qDebug() << "[JOKE] Message sent:" << message;
+        client.pushMessage("joke");
+        qDebug() << "Asked for a joke message.";
     });
 
     // Connect message received signal
     QObject::connect(&client, &zmqclient::messageReceived, [&](QString buffer)
     {
+        qDebug() << "RECEIVED" << buffer;
+
         if (buffer.contains(client.getSubscribeChatTopic()))
         {
             QStringList parts = buffer.split(">");
@@ -96,7 +97,6 @@ int main(int argc, char *argv[])
             QString message = parts.last();
             jokeReceivedTextEdit->appendPlainText(message);
         }
-
     });
 
     // Set focus to chat input line edit on startup
