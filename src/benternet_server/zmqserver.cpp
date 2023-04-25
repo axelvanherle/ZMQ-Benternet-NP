@@ -48,20 +48,20 @@ void zmqserver::sendJokeHttpRequest(QString playerID)
         QString setup = jsonObject["setup"].toString();
         QString punchline = jsonObject["punchline"].toString();
 
-        pushMessage(playerID,setup + " " + punchline);
+        pushMessage(playerID, "joke", setup + " " + punchline);
     }
     else
     {
         //failure
-        pushMessage(playerID,"Failure");
+        pushMessage(playerID, "joke", "Failure");
     }
 
     delete reply;
 }
 
-void zmqserver::pushMessage(QString playerID, QString message)
+void zmqserver::pushMessage(QString playerID, QString topic, QString message)
 {
-    message.prepend(pushTopic.c_str() + playerID + ">");
+    message.prepend(pushTopic.c_str() + playerID + ">" + topic + ">");
     pushSocket->send(message.toStdString().c_str(), message.length());
 }
 

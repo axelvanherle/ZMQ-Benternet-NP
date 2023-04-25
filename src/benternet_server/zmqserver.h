@@ -21,7 +21,7 @@ public:
     virtual ~zmqserver();
 
     void sendJokeHttpRequest(QString);
-    void pushMessage(QString, QString);
+    void pushMessage(QString, QString, QString);
     void pushChatMessage(QString);
     void checkID(QString);
 

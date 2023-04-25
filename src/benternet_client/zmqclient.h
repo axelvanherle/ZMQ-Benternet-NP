@@ -31,7 +31,11 @@ public:
     {
         return pushTopic.length();
     }
-    QString getChatTopic(void)
+    QString getSubscribeTopic(void)
+    {
+        return subscribeTopic.c_str();
+    }
+    QString getSubscribeChatTopic(void)
     {
         return chatSubscribeTopic.c_str();
     }

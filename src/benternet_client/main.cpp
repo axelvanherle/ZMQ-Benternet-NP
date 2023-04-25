@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
     QLabel *jokeInputLabel = new QLabel("Received joke:");
     QPlainTextEdit *jokeReceivedTextEdit = new QPlainTextEdit();
     jokeReceivedTextEdit->setReadOnly(true);
-    jokeReceivedTextEdit->setMaximumBlockCount(1);
+    jokeReceivedTextEdit->setMaximumBlockCount(100);
 
     // Create joke layout
     QVBoxLayout *jokeLayout = new QVBoxLayout();
@@ -84,15 +84,17 @@ int main(int argc, char *argv[])
     // Connect message received signal
     QObject::connect(&client, &zmqclient::messageReceived, [&](QString buffer)
     {
-        if (buffer.contains(client.getChatTopic()))
+        if (buffer.contains(client.getSubscribeChatTopic()))
         {
             QStringList parts = buffer.split(">");
             QString message = parts.last();
             chatReceivedTextEdit->appendPlainText(message);
         }
-        else
+        else if (buffer.contains(client.getSubscribeTopic() + "joke>"))
         {
-            jokeReceivedTextEdit->appendPlainText(buffer);
+            QStringList parts = buffer.split(">");
+            QString message = parts.last();
+            jokeReceivedTextEdit->appendPlainText(message);
         }
 
     });
