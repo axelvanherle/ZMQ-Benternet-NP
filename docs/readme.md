@@ -28,8 +28,9 @@ You will need the generated ID for this, so don't skip this step. To receive a j
 ### Example flowcharts
 #### Chat Service
 Here the client sends one messages, and it receives two messages from two other clients that sent something to the service.
-![image](https://user-images.githubusercontent.com/94362354/234296939-ad1ae71e-4d14-4c8d-b719-3b7a0f59be2b.png)
+![image](https://user-images.githubusercontent.com/94362354/234308439-5b68ca65-441b-4726-b000-142db5a6d61b.png)
 
 #### Joke Service
 In this example the user requests a joke, and the service responds with one.
-![image](https://user-images.githubusercontent.com/94362354/234298093-72515966-c81d-4c9d-829a-e10307630cb7.png)
+![image](https://user-images.githubusercontent.com/94362354/234308984-f07453af-e24b-4607-931c-ab0925a556ee.png)
+
