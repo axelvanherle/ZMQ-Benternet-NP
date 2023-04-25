@@ -23,7 +23,7 @@ To be able to use this service you are going to need to generate a unique ID fro
 You will need the generated ID for this, so don't skip this step. To request a joke you send `axelvanherle>service?>%YOUR GENERATED ID>joke` into the ether. Just kidding, you send it to the broker. This is all you need to do to request a joke. A practical example of this could look like: `axelvanherle>service?>22869>joke`.
 
 #### Receiving the (bad) joke
-You will need the generated ID for this, so don't skip this step. To receive a joke you need to subscribe to `axelvanherle>service!>%YOUR GENERATED ID>joke>%JOKE HERE`. This is all you need to do to receive the requested jokes. A practical example of this could look like: `axelvanherle>service?>22869>joke>I'm afraid for the calendar. Its days are numbered.`.
+You will need the generated ID for this, so don't skip this step. To receive a joke you need to subscribe to `axelvanherle>service!>%YOUR GENERATED ID>joke>%JOKE HERE`. This is all you need to do to receive the requested jokes. A practical example of this could look like: `axelvanherle>service!>22869>joke>I'm afraid for the calendar. Its days are numbered.`.
 
 ### Example flowcharts
 #### Chat Service
@@ -32,5 +32,6 @@ Here the client sends one messages, and it receives two messages from two other 
 
 #### Joke Service
 In this example the user requests a joke, and the service responds with one.
-![image](https://user-images.githubusercontent.com/94362354/234308984-f07453af-e24b-4607-931c-ab0925a556ee.png)
+![image](https://user-images.githubusercontent.com/94362354/234309363-343c27fd-a415-4a4d-9fef-d76c6fd336fe.png)
+
 
