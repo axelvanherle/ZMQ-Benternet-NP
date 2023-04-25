@@ -7,7 +7,7 @@ My project has a integrated joke API where users can request jokes. These jokes 
 There is also a chat service where users can chat to each other. These messages are forwarded to everyone, so there is a fully functioning chat server. Where everyone can send and receive messages from.
 
 ## Documentation
-Documentation can be found under the `docs` directory.
+Documentation about the code and how to utilize the service can be found under the `docs` directory.
 
 ## Showcase
 - [Week 7](https://www.youtube.com/watch?v=MFTyELdtVGo)
