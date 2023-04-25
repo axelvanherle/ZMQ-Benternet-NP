@@ -1,52 +1,39 @@
 # benternet_server documentation
-Bla Bla
 
-## Subscribing to the Server
-Clients can subscribe to the server by connecting to the subscription socket and sending messages to it.
+## Introduction 
+This code represents a ZeroMQ-based server implementation. It listens to a TCP port and subscribes to messages that conform to a certain format. Upon receiving messages, it handles them and takes specific actions based on their content, such as pushing a message to a chat channel or sending a joke request. 
 
-## Interacting with the Server
-Clients can interact with the server by sending messages to the subscription socket. The server responds to certain types of messages by sending HTTP requests to external services.
+## Code Structure
+The code is written in C++ and is divided into three files: 
+- `main.cpp` 
+- `zmqserver.cpp`
+- `zmqserver.h`
 
-### Request Types
+`main.cpp` file contains the `main` function that creates a `zmqserver` object and sets up the connection between the server and the client.
 
-#### Joke Request
+`zmqserver.cpp` file contains the implementation of the `zmqserver` class. It has the following functions: 
 
-Clients can request a joke from the server by sending a message with the keyword "joke". The server responds by sending an HTTP request to the "[http://official-joke-api.appspot.com/random\_joke](http://official-joke-api.appspot.com/random_joke)" URL and broadcasting the joke to all connected clients.
+- `zmqserver` constructor: sets up the ZeroMQ sockets and connects them to the TCP port.
+- `~zmqserver` destructor: deletes the sockets, context, and notifier.
+- `sendJokeHttpRequest`: sends an HTTP request to get a random joke and pushes it to a specific player.
+- `pushMessage`: pushes a message to a specific player.
+- `pushChatMessage`: pushes a chat message to a channel.
+- `checkID`: checks if a player ID exists in the server and adds it if it doesn't.
+- `handleSocketNotification`: receives the ZeroMQ message and emits it as a signal.
 
-##### Example
+`zmqserver.h` file declares the `zmqserver` class and its functions. It also contains the private members of the class, such as the ZeroMQ sockets and the topic strings.
 
-To request a joke, send the following message to the subscription socket:
-```cpp
-axelvanherle>service?>joke
-```
-
-To receive the requested joke, subscribe to the following topic:
-```cpp
-axelvanherle>service!>
-```
-You will receive a message like this:
-```cpp
-axelvanherle>service!> <JOKE WILL BE HERE>
-```
-### Subscription Socket
-The subscription socket listens for incoming messages from clients. The server filters incoming messages by checking the topic of the message against the server's subscription topic.
-
-#### Connection Details
-
-*   Type: ZMQ\_SUB
-*   Protocol: TCP
-*   Address: benternet.pxl-ea-ict.be:24042
-*   Subscription Topic: axelvanherle>service?>
-
-## Sending Messages to Clients
-The server can send messages to clients by connecting to the push socket and sending messages to it.
-
-### Push Socket
-The push socket sends messages to clients. Messages sent through this socket are broadcast to all connected clients.
-
-#### Connection Details
-
-*   Type: ZMQ\_PUSH
-*   Protocol: TCP
-*   Address: benternet.pxl-ea-ict.be:24041
-*   Push Topic: axelvanherle>service!>
+## Dependencies
+The code depends on the following external libraries:
+- `QApplication`
+- `QtWidgets`
+- `QObject`
+- `QDebug`
+- `QInputDialog`
+- `QJsonDocument`
+- `QJsonObject`
+- `QNetworkAccessManager`
+- `QNetworkRequest`
+- `QNetworkReply`
+- `QtNetwork`
+- `zmq.hpp`
