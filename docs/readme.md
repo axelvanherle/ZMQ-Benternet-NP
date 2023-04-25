@@ -26,12 +26,18 @@ You will need the generated ID for this, so don't skip this step. To request a j
 You will need the generated ID for this, so don't skip this step. To receive a joke you need to subscribe to `axelvanherle>service!>%YOUR GENERATED ID>joke>%JOKE HERE`. This is all you need to do to receive the requested jokes. A practical example of this could look like: `axelvanherle>service!>22869>joke>I'm afraid for the calendar. Its days are numbered.`.
 
 ### Example flowcharts
+
+#### Total communication
+![image](https://user-images.githubusercontent.com/94362354/234311511-36c288af-c2b7-4d3c-8dc1-43b3db35dd8b.png)
+
 #### Chat Service
 Here the client sends one messages, and it receives two messages from two other clients that sent something to the service.
+
 ![image](https://user-images.githubusercontent.com/94362354/234308439-5b68ca65-441b-4726-b000-142db5a6d61b.png)
 
 #### Joke Service
 In this example the user requests a joke, and the service responds with one.
+
 ![image](https://user-images.githubusercontent.com/94362354/234309363-343c27fd-a415-4a4d-9fef-d76c6fd336fe.png)
 
 
