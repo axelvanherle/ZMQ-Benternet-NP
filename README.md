@@ -9,5 +9,8 @@ There is also a chat service where users can chat to each other. These messages 
 ## Documentation
 Documentation about the code and how to utilize the service can be found under the `docs` directory.
 
+## How to run
+Load the project into QT, configure it and run it. QT 5.15 and up.
+
 ## Showcase
 - [Week 7](https://www.youtube.com/watch?v=MFTyELdtVGo)
