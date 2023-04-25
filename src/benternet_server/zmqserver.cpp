@@ -62,7 +62,12 @@ void zmqserver::sendJokeHttpRequest(QString playerID)
 void zmqserver::pushMessage(QString playerID, QString message)
 {
     message.prepend(pushTopic.c_str() + playerID + ">");
-    qDebug() << message;
+    pushSocket->send(message.toStdString().c_str(), message.length());
+}
+
+void zmqserver::pushChatMessage(QString message)
+{
+    message.prepend("axelvanherle>service!>chat>");
     pushSocket->send(message.toStdString().c_str(), message.length());
 }
 

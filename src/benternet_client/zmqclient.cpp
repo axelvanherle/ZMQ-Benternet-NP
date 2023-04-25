@@ -3,14 +3,17 @@
 zmqclient::zmqclient(QObject *parent) : QObject(parent)
 {
     srand(time(NULL)); // sets the seed value based on current time
-    playerID = std::to_string((rand() % 100000)+1); // Get a random player id
-
-    subscribeTopic.append(playerID + ">");
-    pushTopic.append(playerID + ">");
 
     pushSocket->connect("tcp://benternet.pxl-ea-ict.be:24041");
 
+    // Get a random player id and add it to the sub and pushtopic
+    playerID = std::to_string((rand() % 100000)+1);
+    subscribeTopic.append(playerID + ">");
+    pushTopic.append(playerID + ">");
+
     subSocket->setsockopt(ZMQ_SUBSCRIBE, subscribeTopic.c_str(), subscribeTopic.length());
+    subSocket->setsockopt(ZMQ_SUBSCRIBE, chatSubscribeTopic.c_str(), chatSubscribeTopic.length());
+
     subSocket->connect("tcp://benternet.pxl-ea-ict.be:24042");
 
     // Get the file descriptor associated with the ZeroMQ socket
@@ -33,6 +36,13 @@ zmqclient::~zmqclient()
 void zmqclient::pushMessage(QString message)
 {
     message.prepend(pushTopic.c_str());
+    pushSocket->send(message.toStdString().c_str(), message.length());
+}
+
+void zmqclient::pushChatMessage(QString message)
+{
+    std::string topic = pushTopic + "chat>";
+    message.prepend(topic.c_str());
     pushSocket->send(message.toStdString().c_str(), message.length());
 }
 

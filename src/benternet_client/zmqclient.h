@@ -21,6 +21,7 @@ public:
     virtual ~zmqclient();
 
     void pushMessage(QString);
+    void pushChatMessage(QString);
 
     int getSubscribeTopicLen(void)
     {
@@ -29,6 +30,10 @@ public:
     int getPushTopicLen(void)
     {
         return pushTopic.length();
+    }
+    QString getChatTopic(void)
+    {
+        return chatSubscribeTopic.c_str();
     }
 
 signals:
@@ -45,6 +50,7 @@ private:
 
     std::string subscribeTopic = "axelvanherle>service!>";
     std::string pushTopic = "axelvanherle>service?>";
+    std::string chatSubscribeTopic = "axelvanherle>service!>chat>";
     std::string playerID;
 
     QSocketNotifier *notifier;

@@ -22,6 +22,7 @@ public:
 
     void sendJokeHttpRequest(QString);
     void pushMessage(QString, QString);
+    void pushChatMessage(QString);
     void checkID(QString);
 
     int getSubscribeTopicLen(void)

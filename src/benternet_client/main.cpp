@@ -19,60 +19,86 @@ int main(int argc, char *argv[])
     window.setWindowTitle("ZMQ Benternet Application by Axel Vanherle.");
 
     // Create widgets
-    QLabel* outputLabel = new QLabel("Message input:");
-    QLineEdit* inputLineEdit = new QLineEdit();
-    QLabel* inputLabel = new QLabel("Subscribed messages:");
-    QPlainTextEdit* receivedTextEdit = new QPlainTextEdit();
-    receivedTextEdit->setReadOnly(true);
-    receivedTextEdit->setMaximumBlockCount(100);
+    QLabel *chatOutputLabel = new QLabel("Send a chat message to all connected clients:");
+    QLineEdit *chatInputLineEdit = new QLineEdit();
 
-    QPushButton* sendButton = new QPushButton("Send Message");
-    QPushButton* jokeButton = new QPushButton("Tell Me a Joke!");
-    QLabel* jokeSendLabel = new QLabel("or");
-    jokeSendLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    jokeSendLabel->setFixedWidth(15);
-    QHBoxLayout* buttonLayout = new QHBoxLayout();
-    buttonLayout->addWidget(sendButton);
-    buttonLayout->addWidget(jokeSendLabel);
-    buttonLayout->addWidget(jokeButton);
+    QLabel *chatInputLabel = new QLabel("Received chat messages:");
+    QPlainTextEdit *chatReceivedTextEdit = new QPlainTextEdit();
+    chatReceivedTextEdit->setReadOnly(true);
+    chatReceivedTextEdit->setMaximumBlockCount(100);
 
-    // Create layout
-    QVBoxLayout* layout = new QVBoxLayout();
-    layout->addWidget(outputLabel);
-    layout->addWidget(inputLineEdit);
-    layout->addLayout(buttonLayout);
-    layout->addWidget(inputLabel);
-    layout->addWidget(receivedTextEdit);
+    QPushButton *chatSendButton = new QPushButton("Send Message");
+
+    // Create chat layout
+    QVBoxLayout *chatLayout = new QVBoxLayout();
+    chatLayout->addWidget(chatOutputLabel);
+    chatLayout->addWidget(chatInputLineEdit);
+    chatLayout->addWidget(chatSendButton);
+    chatLayout->addWidget(chatInputLabel);
+    chatLayout->addWidget(chatReceivedTextEdit);
+
+    QLabel *jokeOutputLabel = new QLabel("Request a joke:");
+    QPushButton *jokeButton = new QPushButton("Tell Me a Joke!");
+    QLabel *jokeInputLabel = new QLabel("Received joke:");
+    QPlainTextEdit *jokeReceivedTextEdit = new QPlainTextEdit();
+    jokeReceivedTextEdit->setReadOnly(true);
+    jokeReceivedTextEdit->setMaximumBlockCount(1);
+
+    // Create joke layout
+    QVBoxLayout *jokeLayout = new QVBoxLayout();
+    jokeLayout->addWidget(jokeOutputLabel);
+    jokeLayout->addWidget(jokeButton);
+    jokeLayout->addWidget(jokeInputLabel);
+    jokeLayout->addWidget(jokeReceivedTextEdit);
+
+    // Create main layout
+    QHBoxLayout *layout = new QHBoxLayout();
+    layout->addLayout(chatLayout);
+    layout->addLayout(jokeLayout);
     window.setLayout(layout);
 
-    QObject::connect(inputLineEdit, &QLineEdit::returnPressed, sendButton, &QPushButton::click);
-    QObject::connect(sendButton, &QPushButton::clicked, [&]()
+    // Connect chat send button
+    QObject::connect(chatInputLineEdit, &QLineEdit::returnPressed, chatSendButton, &QPushButton::click);
+    QObject::connect(chatSendButton, &QPushButton::clicked, [&]()
     {
-        QString message = inputLineEdit->text();
+        QString message = chatInputLineEdit->text();
         if (message.isEmpty())
         {
             QMessageBox::warning(&window, "Error", "Message cannot be empty!");
             return;
         }
-        inputLineEdit->clear();
-        client.pushMessage(message);
+        chatInputLineEdit->clear();
+
+        client.pushChatMessage(message);
         qDebug() << "Message sent: " << message;
     });
 
+    // Connect joke button
     QObject::connect(jokeButton, &QPushButton::clicked, [&]()
     {
         QString message = "joke";
         client.pushMessage(message);
-        receivedTextEdit->appendPlainText("You wanted a joke? Well here it is.");
         qDebug() << "[JOKE] Message sent:" << message;
     });
 
+    // Connect message received signal
     QObject::connect(&client, &zmqclient::messageReceived, [&](QString buffer)
     {
-        std::string received_msg = buffer.toStdString().substr(client.getSubscribeTopicLen());
-        receivedTextEdit->appendPlainText(QString::fromStdString(received_msg));
-        qDebug() << "RECEIVED MESSAGE:" << QString::fromStdString(received_msg);
+        if (buffer.contains(client.getChatTopic()))
+        {
+            QStringList parts = buffer.split(">");
+            QString message = parts.last();
+            chatReceivedTextEdit->appendPlainText(message);
+        }
+        else
+        {
+            jokeReceivedTextEdit->appendPlainText(buffer);
+        }
+
     });
+
+    // Set focus to chat input line edit on startup
+    chatInputLineEdit->setFocus();
 
     window.show();
     return app.exec();

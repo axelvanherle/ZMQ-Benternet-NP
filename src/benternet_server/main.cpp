@@ -19,16 +19,24 @@ int main(int argc, char *argv[])
         qDebug() << "BUFFER:" << buffer;
 
         QStringList parsedBuffer = buffer.split(QRegularExpression("[>?]"));
-        QString playerID = parsedBuffer[3];
-        QString action = parsedBuffer[4];
+        QString ID = parsedBuffer.value(3, "");
+        QString topic = parsedBuffer.value(4, "");
+        QString message = parsedBuffer.value(5, "");
 
-        server.checkID(playerID);
+        server.checkID(ID);
 
-        qDebug() << "received" << action << "from: " << playerID;
+        qDebug() << "received" << topic << "from: " << ID;
 
-        if(action == "joke")
+        if(topic == "chat")
         {
-            server.sendJokeHttpRequest(playerID);
+            qDebug() << "TEST CHAT";
+            server.pushChatMessage(message);
+        }
+
+        if(topic == "joke")
+        {
+            qDebug() << "TEST JOKE";
+            server.sendJokeHttpRequest(ID);
         }
     });
 
