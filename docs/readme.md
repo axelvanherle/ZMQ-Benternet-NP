@@ -15,7 +15,7 @@ To push messages to the chat server you have to generate a unique ID from 1 - 10
 #### Receiving
 Now that you are able to send messages you might also want to be able to receive messages, right? Well to do this the process is simpler. You don't need a generated ID! Hooray. All messages received by the service will be pushed to the `axelvanherle>service!>chat>%MESSAGE` topic. Where `%MESSAGE` is the placeholder for the message that is relayed. So if a message gets pushed by a client, every subscribed client and or service will be receiving these messages. This means that you too can now glow in the dark and listen in on all the juicy private chats. An example message could look like `axelvanherle>service!>chat>Check out this wicked skateboaring trick guys! https://youtu.be/dQw4w9WgXcQ`
 
-### joke service
+### Joke Service
 
 To be able to use this service you are going to need to generate a unique ID from 1 - 100000. This enables you to only receive jokes when *you* want, and it wont be a cluster of bad jokes spamming you. You can generate a ID using `(rand() % 100000)+1`. A practical example of this could be `playerID = std::to_string((rand() % 100000)+1);`. This ID will be the same to request and receive a joke, so don't lose it.
 
@@ -24,3 +24,12 @@ You will need the generated ID for this, so don't skip this step. To request a j
 
 #### Receiving the (bad) joke
 You will need the generated ID for this, so don't skip this step. To receive a joke you need to subscribe to `axelvanherle>service!>%YOUR GENERATED ID>joke>%JOKE HERE`. This is all you need to do to receive the requested jokes. A practical example of this could look like: `axelvanherle>service?>22869>joke>I'm afraid for the calendar. Its days are numbered.`.
+
+### Example flowcharts
+#### Chat Service
+Here the client sends one messages, and it receives two messages from two other clients that sent something to the service.
+![image](https://user-images.githubusercontent.com/94362354/234296939-ad1ae71e-4d14-4c8d-b719-3b7a0f59be2b.png)
+
+#### Joke Service
+In this example the user requests a joke, and the service responds with one.
+![image](https://user-images.githubusercontent.com/94362354/234298093-72515966-c81d-4c9d-829a-e10307630cb7.png)
