@@ -2,14 +2,12 @@
 
 zmqclient::zmqclient(QObject *parent) : QObject(parent)
 {
-    srand(time(NULL)); // sets the seed value based on current time
-
     pushSocket->connect("tcp://benternet.pxl-ea-ict.be:24041");
 
     // Get a random player id and add it to the sub and pushtopic
-    playerID = std::to_string((rand() % 100000)+1);
-    subscribeTopic.append(playerID + ">");
-    pushTopic.append(playerID + ">");
+    uniqueID = std::to_string((rand() % 100000)+1);
+    subscribeTopic.append(uniqueID + ">");
+    pushTopic.append(uniqueID + ">");
 
     subSocket->setsockopt(ZMQ_SUBSCRIBE, subscribeTopic.c_str(), subscribeTopic.length());
     subSocket->setsockopt(ZMQ_SUBSCRIBE, chatSubscribeTopic.c_str(), chatSubscribeTopic.length());

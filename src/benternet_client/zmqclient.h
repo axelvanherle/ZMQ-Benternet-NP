@@ -55,7 +55,7 @@ private:
     std::string subscribeTopic = "axelvanherle>service!>";
     std::string pushTopic = "axelvanherle>service?>";
     std::string chatSubscribeTopic = "axelvanherle>service!>chat>";
-    std::string playerID;
+    std::string uniqueID;
 
     QSocketNotifier *notifier;
 };

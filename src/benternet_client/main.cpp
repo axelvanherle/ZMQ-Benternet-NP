@@ -11,10 +11,11 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-
     zmqclient client;
-
     QWidget window;
+
+    srand(time(NULL)); // sets the seed value based on current time
+
     window.setFixedSize(800, 500);
     window.setWindowTitle("ZMQ Benternet Application by Axel Vanherle.");
 
@@ -70,20 +71,20 @@ int main(int argc, char *argv[])
         chatInputLineEdit->clear();
 
         client.pushChatMessage(message);
-        qDebug() << "Message sent: " << message;
+        qInfo() << "Message sent: " << message;
     });
 
     // Connect joke button
     QObject::connect(jokeButton, &QPushButton::clicked, [&]()
     {
         client.pushMessage("joke");
-        qDebug() << "Asked for a joke message.";
+        qInfo() << "Asked for a joke message.";
     });
 
     // Connect message received signal
     QObject::connect(&client, &zmqclient::messageReceived, [&](QString buffer)
     {
-        qDebug() << "RECEIVED" << buffer;
+        qInfo() << "RECEIVED: " << buffer;
 
         if (buffer.contains(client.getSubscribeChatTopic()))
         {
