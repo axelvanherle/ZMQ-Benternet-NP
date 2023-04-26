@@ -1,5 +1,0 @@
-baseURL = 'http://example.org/'
-languageCode = 'en-us'
-title = 'Benternet Blog'
-
-theme = "hugo-blog-awesome"
