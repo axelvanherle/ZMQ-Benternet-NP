@@ -2,6 +2,8 @@
 
 zmqserver::zmqserver(QObject *parent) : QObject(parent)
 {
+    pushSocket->connect("tcp://benternet.pxl-ea-ict.be:24041");
+
     subSocket->setsockopt(ZMQ_SUBSCRIBE, subscribeTopic.c_str(), subscribeTopic.length());
     subSocket->connect("tcp://benternet.pxl-ea-ict.be:24042");
 
@@ -11,8 +13,6 @@ zmqserver::zmqserver(QObject *parent) : QObject(parent)
     subSocket->getsockopt(ZMQ_FD, &fd, &size);
     notifier = new QSocketNotifier(fd, QSocketNotifier::Read, this);
     connect(notifier, SIGNAL(activated(int)), this, SLOT(handleSocketNotification()));
-
-    pushSocket->connect("tcp://benternet.pxl-ea-ict.be:24041");
 }
 
 zmqserver::~zmqserver()
@@ -24,7 +24,7 @@ zmqserver::~zmqserver()
     delete notifier;
 }
 
-void zmqserver::sendJokeHttpRequest(QString playerID)
+void zmqserver::sendJokeHttpRequest(QString passedID)
 {
     // create custom temporary event loop on stack
     QEventLoop eventLoop;
@@ -48,20 +48,20 @@ void zmqserver::sendJokeHttpRequest(QString playerID)
         QString setup = jsonObject["setup"].toString();
         QString punchline = jsonObject["punchline"].toString();
 
-        pushMessage(playerID, "joke", setup + " " + punchline);
+        pushMessage(passedID, "joke", setup + " " + punchline);
     }
     else
     {
         //failure
-        pushMessage(playerID, "joke", "Failure");
+        pushMessage(passedID, "joke", "Failure");
     }
 
     delete reply;
 }
 
-void zmqserver::pushMessage(QString playerID, QString topic, QString message)
+void zmqserver::pushMessage(QString passedID, QString topic, QString message)
 {
-    message.prepend(pushTopic.c_str() + playerID + ">" + topic + ">");
+    message.prepend(pushTopic.c_str() + passedID + ">" + topic + ">");
     pushSocket->send(message.toStdString().c_str(), message.length());
 }
 
@@ -71,12 +71,12 @@ void zmqserver::pushChatMessage(QString message)
     pushSocket->send(message.toStdString().c_str(), message.length());
 }
 
-void zmqserver::checkID(QString playerID)
+void zmqserver::checkID(QString passedID)
 {
-    if (!playerIDs.contains(playerID))
+    if (!uniqueIDs.contains(passedID))
     {
         qDebug() << "New player joined!";
-        playerIDs.append(playerID);
+        uniqueIDs.append(passedID);
     }
 }
 

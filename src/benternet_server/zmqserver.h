@@ -49,7 +49,7 @@ private:
     std::string subscribeTopic = "axelvanherle>service?>";
     std::string pushTopic = "axelvanherle>service!>";
 
-    QList<QString> playerIDs;
+    QList<QString> uniqueIDs;
 
     QSocketNotifier *notifier;
 };

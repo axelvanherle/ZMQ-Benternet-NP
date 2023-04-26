@@ -16,26 +16,23 @@ int main(int argc, char *argv[])
 
     QObject::connect(&server, &zmqserver::messageReceived, [&](QString buffer)
     {
-        qDebug() << "BUFFER:" << buffer;
+        qInfo() << "BUFFER:" << buffer;
 
-        QStringList parsedBuffer = buffer.split(QRegularExpression("[>?]"));
-        QString ID = parsedBuffer.value(3, "");
-        QString topic = parsedBuffer.value(4, "");
-        QString message = parsedBuffer.value(5, "");
+        const QStringList& parts = buffer.split(QRegularExpression("[>?]"));
+        const QString& ID = parts.value(3);
+        const QString& topic = parts.value(4);
+        const QString& message = parts.value(5);
 
         server.checkID(ID);
 
-        qDebug() << "received" << topic << "from: " << ID;
+        qInfo() << "received" << topic << "from:" << ID;
 
-        if(topic == "chat")
+        if (topic == "chat")
         {
-            qDebug() << "TEST CHAT";
             server.pushChatMessage(message);
         }
-
-        if(topic == "joke")
+        else if (topic == "joke")
         {
-            qDebug() << "TEST JOKE";
             server.sendJokeHttpRequest(ID);
         }
     });
