@@ -18,10 +18,10 @@ int main(int argc, char *argv[])
     {
         qInfo() << "BUFFER:" << buffer;
 
-        const QStringList& parts = buffer.split(QRegularExpression("[>?]"));
-        const QString& ID = parts.value(3);
-        const QString& topic = parts.value(4);
-        const QString& message = parts.value(5);
+        const QStringList parts = buffer.split(">");
+        const QString ID = parts.value(2);
+        const QString topic = parts.value(3);
+        const QString&message = parts.value(4);
 
         server.checkID(ID);
 
