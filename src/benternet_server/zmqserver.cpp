@@ -74,7 +74,7 @@ void zmqserver::pushChatMessage(QString id, QString message)
     }
     else
     {
-        message.prepend("axelvanherle>service!>chat>Anon: ");
+        message.prepend("axelvanherle>service!>chat>Guest: ");
         pushSocket->send(message.toStdString().c_str(), message.length());
     }
 }
