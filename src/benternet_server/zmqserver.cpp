@@ -94,7 +94,7 @@ void zmqserver::addIdToIdNameMap(QString name, QString id)
     else
     {
         QString message;
-        message.prepend("axelvanherle>service!>chat>ERROR: ID ALREADY CLAIMED. YOU CAN NOT LINK TO ALREADY CLAIMED ID");
+        message.prepend("axelvanherle>service!>" + id + ">ERROR: ID ALREADY CLAIMED. YOU CAN NOT LINK TO ALREADY CLAIMED ID");
         pushSocket->send(message.toStdString().c_str(), message.length());
     }
 }
