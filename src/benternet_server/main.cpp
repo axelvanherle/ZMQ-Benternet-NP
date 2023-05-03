@@ -18,22 +18,28 @@ int main(int argc, char *argv[])
     {
         qInfo() << "BUFFER:" << buffer;
 
-        const QStringList parts = buffer.split(">");
-        const QString ID = parts.value(2);
-        const QString topic = parts.value(3);
-        const QString&message = parts.value(4);
+        const QStringList parsedBuffer = buffer.split(">");
+        const QString id = parsedBuffer.value(2);
+        const QString topic = parsedBuffer.value(3);
+        const QString message = parsedBuffer.value(4);
 
-        server.checkID(ID);
+        qInfo() << "received" << topic << "from:" << id;
 
-        qInfo() << "received" << topic << "from:" << ID;
-
-        if (topic == "chat")
+        if (topic == "setId")
         {
-            server.pushChatMessage(message);
+            server.addIdToIdNameMap(message, id);
+        }
+        else if (topic == "chat")
+        {
+            server.pushChatMessage(id, message);
+        }
+        else if (topic == "anonChat")
+        {
+            server.pushAnonChatMessage(message);
         }
         else if (topic == "joke")
         {
-            server.sendJokeHttpRequest(ID);
+            server.sendJokeHttpRequest(id);
         }
     });
 

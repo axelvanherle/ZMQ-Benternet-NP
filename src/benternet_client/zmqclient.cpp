@@ -44,6 +44,13 @@ void zmqclient::pushChatMessage(QString message)
     pushSocket->send(message.toStdString().c_str(), message.length());
 }
 
+void zmqclient::pushAnonChatMessage(QString message)
+{
+    std::string topic = pushTopic + "anonChat>";
+    message.prepend(topic.c_str());
+    pushSocket->send(message.toStdString().c_str(), message.length());
+}
+
 void zmqclient::handleSocketNotification()
 {
     while (subSocket->recv(zmqBuffer, ZMQ_DONTWAIT))

@@ -22,8 +22,9 @@ public:
 
     void sendJokeHttpRequest(QString);
     void pushMessage(QString, QString, QString);
-    void pushChatMessage(QString);
-    void checkID(QString);
+    void pushChatMessage(QString, QString);
+    void pushAnonChatMessage(QString);
+    void addIdToIdNameMap(QString, QString);
 
     int getSubscribeTopicLen(void)
     {
@@ -49,7 +50,7 @@ private:
     std::string subscribeTopic = "axelvanherle>service?>";
     std::string pushTopic = "axelvanherle>service!>";
 
-    QList<QString> uniqueIDs;
+    QMap<QString, QString> idNameMap;
 
     QSocketNotifier *notifier;
 };

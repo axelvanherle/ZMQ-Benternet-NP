@@ -65,18 +65,31 @@ void zmqserver::pushMessage(QString passedID, QString topic, QString message)
     pushSocket->send(message.toStdString().c_str(), message.length());
 }
 
-void zmqserver::pushChatMessage(QString message)
+void zmqserver::pushChatMessage(QString id, QString message)
 {
-    message.prepend("axelvanherle>service!>chat>");
+    if (idNameMap.contains(id))
+    {
+        message.prepend("axelvanherle>service!>chat>" + idNameMap[id] + ": ");
+        pushSocket->send(message.toStdString().c_str(), message.length());
+    }
+    else
+    {
+        message.prepend("axelvanherle>service!>chat>Anon: ");
+        pushSocket->send(message.toStdString().c_str(), message.length());
+    }
+}
+
+void zmqserver::pushAnonChatMessage(QString message)
+{
+    message.prepend("axelvanherle>service!>chat>Anon: ");
     pushSocket->send(message.toStdString().c_str(), message.length());
 }
 
-void zmqserver::checkID(QString passedID)
+void zmqserver::addIdToIdNameMap(QString name, QString id)
 {
-    if (!uniqueIDs.contains(passedID))
+    if (!idNameMap.contains(id))
     {
-        qDebug() << "New player joined!";
-        uniqueIDs.append(passedID);
+        idNameMap.insert(id, name);
     }
 }
 

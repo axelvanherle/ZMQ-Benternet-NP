@@ -22,6 +22,7 @@ public:
 
     void pushMessage(QString);
     void pushChatMessage(QString);
+    void pushAnonChatMessage(QString);
 
     int getSubscribeTopicLen(void)
     {

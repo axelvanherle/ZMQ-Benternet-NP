@@ -10,41 +10,40 @@
 
 int main(int argc, char *argv[])
 {
+    srand(time(NULL)); // sets the seed value based on current time
+
     QApplication app(argc, argv);
     zmqclient client;
     QWidget window;
 
-    srand(time(NULL)); // sets the seed value based on current time
-
     window.setFixedSize(800, 500);
     window.setWindowTitle("ZMQ Benternet Application by Axel Vanherle.");
 
-    // Create widgets
+    // Chat window code.
     QLabel *chatOutputLabel = new QLabel("Send a chat message to all connected clients:");
     QLineEdit *chatInputLineEdit = new QLineEdit();
-
+    QPushButton *chatSendButton = new QPushButton("Send Message");
+    QPushButton *chatAnonSendButton = new QPushButton("Send Anonymous Message");
     QLabel *chatInputLabel = new QLabel("Received chat messages:");
     QPlainTextEdit *chatReceivedTextEdit = new QPlainTextEdit();
     chatReceivedTextEdit->setReadOnly(true);
     chatReceivedTextEdit->setMaximumBlockCount(100);
-
-    QPushButton *chatSendButton = new QPushButton("Send Message");
-
     // Create chat layout
     QVBoxLayout *chatLayout = new QVBoxLayout();
     chatLayout->addWidget(chatOutputLabel);
     chatLayout->addWidget(chatInputLineEdit);
     chatLayout->addWidget(chatSendButton);
+    chatLayout->addWidget(chatAnonSendButton);
     chatLayout->addWidget(chatInputLabel);
     chatLayout->addWidget(chatReceivedTextEdit);
 
+    // Joke window code.
     QLabel *jokeOutputLabel = new QLabel("Request a joke:");
     QPushButton *jokeButton = new QPushButton("Tell Me a Joke!");
     QLabel *jokeInputLabel = new QLabel("Received joke:");
     QPlainTextEdit *jokeReceivedTextEdit = new QPlainTextEdit();
     jokeReceivedTextEdit->setReadOnly(true);
     jokeReceivedTextEdit->setMaximumBlockCount(100);
-
     // Create joke layout
     QVBoxLayout *jokeLayout = new QVBoxLayout();
     jokeLayout->addWidget(jokeOutputLabel);
@@ -52,10 +51,42 @@ int main(int argc, char *argv[])
     jokeLayout->addWidget(jokeInputLabel);
     jokeLayout->addWidget(jokeReceivedTextEdit);
 
+    QPushButton *stringInputButton = new QPushButton("Set a name");
+    QObject::connect(stringInputButton, &QPushButton::clicked, [&]()
+    {
+        // Create new dialog window
+        QDialog *stringInputDialog = new QDialog(&window);
+        stringInputDialog->setWindowTitle("Enter your name");
+
+        // Create widgets for string input dialog
+        QLabel *stringInputLabel = new QLabel("Name:");
+        QLineEdit *stringLineEdit = new QLineEdit();
+        QPushButton *okButton = new QPushButton("Set name");
+
+        // Connect "Ok" button to slot to extract text from QLineEdit and close window
+        QObject::connect(okButton, &QPushButton::clicked, [&]()
+        {
+            QString inputString = stringLineEdit->text();
+            client.pushMessage("setId>"+inputString);
+            stringInputDialog->close();
+        });
+
+        // Create layout for string input dialog
+        QVBoxLayout *stringInputLayout = new QVBoxLayout();
+        stringInputLayout->addWidget(stringInputLabel);
+        stringInputLayout->addWidget(stringLineEdit);
+        stringInputLayout->addWidget(okButton);
+        stringInputDialog->setLayout(stringInputLayout);
+
+        // Show string input dialog
+        stringInputDialog->exec();
+    });
+
     // Create main layout
     QHBoxLayout *layout = new QHBoxLayout();
     layout->addLayout(chatLayout);
     layout->addLayout(jokeLayout);
+    layout->addWidget(stringInputButton);
     window.setLayout(layout);
 
     // Connect chat send button
@@ -72,6 +103,20 @@ int main(int argc, char *argv[])
 
         client.pushChatMessage(message);
         qInfo() << "Message sent: " << message;
+    });
+    // Connect chatAnonSendButton send button
+    QObject::connect(chatAnonSendButton, &QPushButton::clicked, [&]()
+    {
+        QString message = chatInputLineEdit->text();
+        if (message.isEmpty())
+        {
+            QMessageBox::warning(&window, "Error", "Message cannot be empty!");
+            return;
+        }
+    chatInputLineEdit->clear();
+
+    client.pushAnonChatMessage(message);
+    qInfo() << "Message sent: " << message;
     });
 
     // Connect joke button
