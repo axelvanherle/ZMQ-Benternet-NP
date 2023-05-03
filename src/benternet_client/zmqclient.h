@@ -20,34 +20,49 @@ public:
     explicit zmqclient(QObject *parent = nullptr);
     virtual ~zmqclient();
 
+    // This appends the pushTopic variable and sends what is passed as a message.
     void pushMessage(QString);
+
+    // This appends the pushTopic variable and the chat toppic and sends what is passed as a message.
     void pushChatMessage(QString);
+
+    // This appends the pushTopic variable and the anonChat toppic and sends what is passed as a message.
     void pushAnonChatMessage(QString);
 
+    // Gets the length of subscribeTopic
     int getSubscribeTopicLen(void)
     {
         return subscribeTopic.length();
     }
+
+    // Gets the length of pushTopic
     int getPushTopicLen(void)
     {
         return pushTopic.length();
     }
+
+    // Returns subscribeTopic
     QString getSubscribeTopic(void)
     {
         return subscribeTopic.c_str();
     }
+
+    // Returns pushTopic
     QString getSubscribeChatTopic(void)
     {
         return chatSubscribeTopic.c_str();
     }
 
 signals:
+    // Signal used to receive messages
     void messageReceived(QString);
 
 private slots:
+    // Slot to handle socket notifications
     void handleSocketNotification();
 
 private:
+    // Self explanatory naming.
     zmq::context_t *context = new zmq::context_t(1);
     zmq::message_t *zmqBuffer  = new zmq::message_t();
     zmq::socket_t *pushSocket = new zmq::socket_t(*context, ZMQ_PUSH);

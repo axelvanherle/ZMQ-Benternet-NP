@@ -20,28 +20,43 @@ public:
     explicit zmqserver(QObject *parent = nullptr);
     virtual ~zmqserver();
 
+    // Sends a htpp request to the joke api, and pushes the joke to the id that requested it.
     void sendJokeHttpRequest(QString);
+
+    // Pushes the passed message to the passed id with the passed topic.
     void pushMessage(QString, QString, QString);
+
+    // Pushes a chat message from the passed id with the passed message
     void pushChatMessage(QString, QString);
+
+    // Pushes a chat message anonymously from the passed id with the passed message
     void pushAnonChatMessage(QString);
+
+    // Checks if the id is claimed, adds the id if it isnt, sends a error if it is.
     void addIdToIdNameMap(QString, QString);
 
+    // Gets the length of subscribeTopic
     int getSubscribeTopicLen(void)
     {
         return subscribeTopic.length();
     }
+
+    // Gets the length of pushTopic
     int getPushTopicLen(void)
     {
         return pushTopic.length();
     }
 
 signals:
+    // Signal used to receive messages
     void messageReceived(QString);
 
 private slots:
+    // Slot to handle socket notifications
     void handleSocketNotification();
 
 private:
+    // Self explanatory naming.
     zmq::context_t *context = new zmq::context_t(1);
     zmq::message_t *zmqBuffer  = new zmq::message_t();
     zmq::socket_t *pushSocket = new zmq::socket_t(*context, ZMQ_PUSH);
