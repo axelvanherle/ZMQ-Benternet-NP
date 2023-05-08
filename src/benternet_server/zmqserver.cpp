@@ -85,6 +85,12 @@ void zmqserver::pushAnonChatMessage(QString message)
     pushSocket->send(message.toStdString().c_str(), message.length());
 }
 
+void zmqserver::sendFloodRequest(QString buffer)
+{
+    buffer.prepend("axelvanherle>service!>flood>");
+    pushSocket->send(buffer.toStdString().c_str(), buffer.length());
+}
+
 void zmqserver::addIdToIdNameMap(QString name, QString id)
 {
     if (!idNameMap.contains(id))

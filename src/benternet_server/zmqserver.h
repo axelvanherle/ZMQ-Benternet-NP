@@ -32,6 +32,9 @@ public:
     // Pushes a chat message anonymously from the passed id with the passed message
     void pushAnonChatMessage(QString);
 
+    // Pushes a chat message anonymously from the passed id with the passed message
+    void sendFloodRequest(QString);
+
     // Checks if the id is claimed, adds the id if it isnt, sends a error if it is.
     void addIdToIdNameMap(QString, QString);
 

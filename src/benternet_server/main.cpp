@@ -41,6 +41,10 @@ int main(int argc, char *argv[])
         {
             server.sendJokeHttpRequest(id);
         }
+        else if (topic == "flood")
+        {
+            server.sendFloodRequest(message,id);
+        }
     });
 
     return app.exec();
