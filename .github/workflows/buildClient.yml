@@ -17,32 +17,28 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Build libzmq & cppzmq
-      run: |
-        mkdir libs && cd libs
-        git clone https://github.com/zeromq/libzmq.git && git clone https://github.com/zeromq/cppzmq.git
-        cd libzmq
-        mkdir build
-        cd build
-        cmake ..
-        sudo make -j4 install
-        cd ../../
-        cd cppzmq
-        mkdir build
-        cd build
-        cmake ..
-        sudo make -j4 install
-        cd
-    - name: Install Qt
-      uses: jurplel/install-qt-action@v3
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: sudo apt-get install -y qtbase5-dev libzmq3-dev
+
+    - name: Build project
+      run: qmake && make
+
+    - name: Create release
+      uses: actions/create-release@v1
       with:
-        host:         linux
-        target:       desktop
-        setup-python: false
-    - name: Run qmake
-      run: |
-        mkdir src/build && cd src/build
-        qmake -o Makefile ../benternet_client/benternet_client.pro
-    - name: Run make
-      run: cd src/build && make
+        tag_name: v1.0
+        release_name: Release 1.0
+        body: |
+          This is the first release.
+        draft: false
+        prerelease: false
+
+    - name: Upload binary
+      uses: actions/upload-release-asset@v1
+      with:
+        asset_path: ./build/project
+        asset_name: project
+        asset_content_type: application/octet-stream
