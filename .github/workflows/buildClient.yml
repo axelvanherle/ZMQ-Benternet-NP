@@ -46,8 +46,11 @@ jobs:
         qmake -o Makefile ../benternet_client/benternet_client.pro
     - name: Run make
       run: cd src/build && make
-    - name: Run linuxdeployqt
+    - name: linuxdeployqt
       run: |
+        sudo apt install libfuse2
+        sudo apt-get install libxcb-randr0-dev libxcb-xtest0-dev libxcb-xinerama0-dev libxcb-shape0-dev libxcb-xkb-dev
         wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
-        chmod +x ./linuxdeployqt-continuous-x86_64.AppImage
-        ./linuxdeployqt-continuous-x86_64 src/build
+        chmod +x linuxdeployqt-continuous-x86_64.AppImage
+        ./linuxdeployqt-continuous-x86_64.AppImage src/build/benternet_client -appimage -unsupported-allow-new-glibc
+        ls
