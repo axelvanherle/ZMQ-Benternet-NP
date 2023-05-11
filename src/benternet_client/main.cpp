@@ -134,9 +134,9 @@ int main(int argc, char *argv[])
     // Create misc layout
     QVBoxLayout *miscLayout = new QVBoxLayout();
     miscLayout->addWidget(jokeButton);
+    miscLayout->addWidget(floodButton);
     miscLayout->addWidget(jokeInputLabel);
     miscLayout->addWidget(jokeReceivedTextEdit);
-    miscLayout->addWidget(floodButton);
 
     // Create main layout
     QHBoxLayout *layout = new QHBoxLayout();
