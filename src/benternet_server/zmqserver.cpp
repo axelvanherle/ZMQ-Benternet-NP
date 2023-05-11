@@ -24,7 +24,7 @@ zmqserver::~zmqserver()
     delete notifier;
 }
 
-void zmqserver::sendJokeHttpRequest(QString passedID)
+void zmqserver::sendOfficialJokeApiRequest(QString userId)
 {
     // create custom temporary event loop on stack
     QEventLoop eventLoop;
@@ -48,41 +48,41 @@ void zmqserver::sendJokeHttpRequest(QString passedID)
         QString setup = jsonObject["setup"].toString();
         QString punchline = jsonObject["punchline"].toString();
 
-        pushMessage(passedID, "joke", setup + " " + punchline);
+        pushMessage(userId, "joke", setup + " " + punchline);
     }
     else
     {
         //failure
-        pushMessage(passedID, "joke", "Failure");
+        pushMessage(userId, "joke", "Failure");
     }
 
     delete reply;
 }
 
-void zmqserver::pushMessage(QString passedID, QString topic, QString message)
+void zmqserver::pushMessage(QString userId, QString topic, QString buffer)
 {
-    message.prepend(pushTopic.c_str() + passedID + ">" + topic + ">");
-    pushSocket->send(message.toStdString().c_str(), message.length());
+    buffer.prepend(pushTopic.c_str() + userId + ">" + topic + ">");
+    pushSocket->send(buffer.toStdString().c_str(), buffer.length());
 }
 
-void zmqserver::pushChatMessage(QString id, QString message)
+void zmqserver::pushChatMessage(QString userId, QString buffer)
 {
-    if (idNameMap.contains(id))
+    if (idNameMap.contains(userId))
     {
-        message.prepend("axelvanherle>service!>chat>" + idNameMap[id] + ": ");
-        pushSocket->send(message.toStdString().c_str(), message.length());
+        buffer.prepend("axelvanherle>service!>chat>" + idNameMap[userId] + ": ");
+        pushSocket->send(buffer.toStdString().c_str(), buffer.length());
     }
     else
     {
-        message.prepend("axelvanherle>service!>chat>Guest: ");
-        pushSocket->send(message.toStdString().c_str(), message.length());
+        buffer.prepend("axelvanherle>service!>chat>Guest: ");
+        pushSocket->send(buffer.toStdString().c_str(), buffer.length());
     }
 }
 
-void zmqserver::pushAnonChatMessage(QString message)
+void zmqserver::pushAnonChatMessage(QString buffer)
 {
-    message.prepend("axelvanherle>service!>chat>Anon: ");
-    pushSocket->send(message.toStdString().c_str(), message.length());
+    buffer.prepend("axelvanherle>service!>chat>Anon: ");
+    pushSocket->send(buffer.toStdString().c_str(), buffer.length());
 }
 
 void zmqserver::sendFloodRequest(QString buffer)
@@ -91,16 +91,16 @@ void zmqserver::sendFloodRequest(QString buffer)
     pushSocket->send(buffer.toStdString().c_str(), buffer.length());
 }
 
-void zmqserver::addIdToIdNameMap(QString name, QString id)
+void zmqserver::addIdToIdNameMap(QString userId, QString buffer)
 {
-    if (!idNameMap.contains(id))
+    if (!idNameMap.contains(userId))
     {
-        idNameMap.insert(id, name);
+        idNameMap.insert(userId, buffer);
     }
     else
     {
         QString message;
-        message.prepend("axelvanherle>service!>" + id + ">ERROR: ID ALREADY CLAIMED. YOU CAN NOT LINK TO ALREADY CLAIMED ID");
+        message.prepend("axelvanherle>service!>" + userId + ">ERROR: ID ALREADY CLAIMED. YOU CAN NOT LINK TO ALREADY CLAIMED ID");
         pushSocket->send(message.toStdString().c_str(), message.length());
     }
 }

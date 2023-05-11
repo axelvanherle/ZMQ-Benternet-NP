@@ -19,19 +19,19 @@ int main(int argc, char *argv[])
         qInfo() << "BUFFER:" << buffer;
 
         const QStringList parsedBuffer = buffer.split(">");
-        const QString id = parsedBuffer.value(2);
+        const QString userId = parsedBuffer.value(2);
         const QString topic = parsedBuffer.value(3);
         const QString message = parsedBuffer.value(4);
 
-        qInfo() << "received" << topic << "from:" << id;
+        qInfo() << "received" << topic << "from:" << userId;
 
         if (topic == "setId")
         {
-            server.addIdToIdNameMap(message, id);
+            server.addIdToIdNameMap(userId, message);
         }
         else if (topic == "chat")
         {
-            server.pushChatMessage(id, message);
+            server.pushChatMessage(userId, message);
         }
         else if (topic == "anonChat")
         {
@@ -39,11 +39,11 @@ int main(int argc, char *argv[])
         }
         else if (topic == "joke")
         {
-            server.sendJokeHttpRequest(id);
+            server.sendOfficialJokeApiRequest(userId);
         }
         else if (topic == "flood")
         {
-            server.sendFloodRequest(message,id);
+            server.sendFloodRequest(message);
         }
     });
 

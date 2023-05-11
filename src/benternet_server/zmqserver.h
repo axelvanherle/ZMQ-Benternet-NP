@@ -21,7 +21,7 @@ public:
     virtual ~zmqserver();
 
     // Sends a htpp request to the joke api, and pushes the joke to the id that requested it.
-    void sendJokeHttpRequest(QString);
+    void sendOfficialJokeApiRequest(QString);
 
     // Pushes the passed message to the passed id with the passed topic.
     void pushMessage(QString, QString, QString);
