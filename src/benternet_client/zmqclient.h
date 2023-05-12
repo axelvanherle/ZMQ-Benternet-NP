@@ -53,6 +53,12 @@ public:
         return chatSubscribeTopic.c_str();
     }
 
+    // Returns pushTopic
+    QString getSubscribeFloodTopic(void)
+    {
+        return floodSubscribeTopic.c_str();
+    }
+
 signals:
     // Signal used to receive messages
     void messageReceived(QString);
@@ -71,6 +77,7 @@ private:
     std::string subscribeTopic = "axelvanherle>service!>";
     std::string pushTopic = "axelvanherle>service?>";
     std::string chatSubscribeTopic = "axelvanherle>service!>chat>";
+    std::string floodSubscribeTopic = "axelvanherle>service!>flood>";
     std::string uniqueID;
 
     QSocketNotifier *notifier;

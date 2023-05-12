@@ -11,6 +11,7 @@ zmqclient::zmqclient(QObject *parent) : QObject(parent)
 
     subSocket->setsockopt(ZMQ_SUBSCRIBE, subscribeTopic.c_str(), subscribeTopic.length());
     subSocket->setsockopt(ZMQ_SUBSCRIBE, chatSubscribeTopic.c_str(), chatSubscribeTopic.length());
+    subSocket->setsockopt(ZMQ_SUBSCRIBE, floodSubscribeTopic.c_str(), floodSubscribeTopic.length());
 
     subSocket->connect("tcp://benternet.pxl-ea-ict.be:24042");
 
