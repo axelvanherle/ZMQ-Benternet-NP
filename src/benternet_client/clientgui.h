@@ -35,9 +35,6 @@ private:
     QPushButton *floodButton = new QPushButton("Flood a topic");
     QVBoxLayout *miscLayout = new QVBoxLayout();
 
-
-
-
     void setupChatGUI(void);
     void setupMiscGUI(void);
 };

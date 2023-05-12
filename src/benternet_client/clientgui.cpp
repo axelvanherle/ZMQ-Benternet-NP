@@ -164,11 +164,11 @@ void clientgui::setupMiscGUI()
 
         // Connect "Ok" button to slot to extract text from QLineEdit and close window
         QObject::connect(okButton, &QPushButton::clicked, [&]()
-            {
-                QString topicToFloodString = topicToFloodEdit->text();
-                client.pushMessage("flood>"+topicToFloodString + "[" + selectedOption);
-                stringInputDialog->close();
-            });
+        {
+            QString topicToFloodString = topicToFloodEdit->text();
+            client.pushMessage("flood>"+topicToFloodString + "[" + selectedOption);
+            stringInputDialog->close();
+        });
 
         // Create layout for string input dialog
         QVBoxLayout *stringInputLayout = new QVBoxLayout();
