@@ -153,15 +153,15 @@ void clientgui::setupMiscGUI()
         stringInputDialog->setWindowTitle("Topic flooder");
 
         // Create widgets for string input dialog
-        QLabel *topicToFlood = new QLabel("What topic are we flooding? (DONT FLOOD SERVICES WHERE REQUEST ARE PAID)");
+        QLabel *topicToFlood = new QLabel("What topic are we flooding? (LIMITED TO PROTECT PAID SERVICES)");
         QLineEdit *topicToFloodEdit = new QLineEdit();
 
         // Create a comboox
         QComboBox *comboBox = new QComboBox();
         // Add some options to the combo box
-        comboBox->addItem("50");
-        comboBox->addItem("100");
-        comboBox->addItem("250");
+        comboBox->addItem("2");
+        comboBox->addItem("5");
+        comboBox->addItem("10");
         // Set the current index to the first option (optional)
         comboBox->setCurrentIndex(0);
         // Connect a slot to be called when the user selects an option
