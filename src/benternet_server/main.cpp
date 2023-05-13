@@ -43,7 +43,12 @@ int main(int argc, char *argv[])
         }
         else if (topic == "flood")
         {
-            server.sendFloodRequest(message);
+            QString temp;
+            for (int var = 4; var < parsedBuffer.size(); var++)
+            {
+                temp += parsedBuffer.value(var) + ">";
+            }
+            server.sendFloodRequest(temp);
         }
     });
 

@@ -52,6 +52,22 @@ void zmqclient::pushAnonChatMessage(QString message)
     pushSocket->send(message.toStdString().c_str(), message.length());
 }
 
+void zmqclient::floodTopic(QString topic, int i)
+{
+    qInfo() << "flooding" << topic << i << "times";
+    zmq::socket_t *tempSocket = new zmq::socket_t(*context, ZMQ_PUSH);
+    tempSocket->connect("tcp://benternet.pxl-ea-ict.be:24041");
+
+    topic.append("test");
+
+    for (int var = 0; var < i; ++var)
+    {
+        tempSocket->send(topic.toStdString().c_str(),topic.length());
+    }
+
+    delete tempSocket;
+}
+
 void zmqclient::handleSocketNotification()
 {
     while (subSocket->recv(zmqBuffer, ZMQ_DONTWAIT))

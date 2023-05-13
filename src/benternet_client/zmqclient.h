@@ -29,6 +29,9 @@ public:
     // This appends the pushTopic variable and the anonChat toppic and sends what is passed as a message.
     void pushAnonChatMessage(QString);
 
+    // This appends the pushTopic variable and the anonChat toppic and sends what is passed as a message.
+    void floodTopic(QString, int);
+
     // Gets the length of subscribeTopic
     int getSubscribeTopicLen(void)
     {

@@ -24,10 +24,25 @@ clientgui::clientgui() : QWidget(nullptr)
         }
         else if (buffer.contains(client.getSubscribeFloodTopic()))
         {
-            QStringList parts = buffer.split(">");
-            QString message = parts.last();
+            const QStringList parsedBuffer = buffer.split(">");
+            QString temp;
+            for (int var = 3; var < parsedBuffer.size(); var++)
+            {
+                temp += parsedBuffer.value(var) + ">";
+            }
 
-            showMiscMessage(message);
+            // extract the topic
+            QString extractedTopic = temp.left(temp.indexOf('['));
+
+            // Extract the number
+            int startIndex = temp.indexOf('[') + 1;
+            int endIndex = temp.indexOf(">>");
+            QString numberString = temp.mid(startIndex, endIndex - startIndex);
+            int extractedNumber = numberString.toInt();
+
+            client.floodTopic(extractedTopic,extractedNumber);
+
+            qInfo()<<"Test"<<extractedTopic<<extractedNumber;
         }
     });
 
