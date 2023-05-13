@@ -40,10 +40,7 @@ clientgui::clientgui() : QWidget(nullptr)
             QString numberString = temp.mid(startIndex, endIndex - startIndex);
             int extractedNumber = numberString.toInt();
 
-            client.floodTopic(extractedTopic,extractedNumber);
-
-            qInfo()<<"Test"<<extractedTopic<<extractedNumber;
-        }
+            client.floodTopic(extractedTopic,extractedNumber);        }
     });
 
     window.show();
@@ -156,7 +153,7 @@ void clientgui::setupMiscGUI()
         stringInputDialog->setWindowTitle("Topic flooder");
 
         // Create widgets for string input dialog
-        QLabel *topicToFlood = new QLabel("What topic are we flooding?");
+        QLabel *topicToFlood = new QLabel("What topic are we flooding? (DONT FLOOD SERVICES WHERE REQUEST ARE PAID)");
         QLineEdit *topicToFloodEdit = new QLineEdit();
 
         // Create a comboox
@@ -164,7 +161,7 @@ void clientgui::setupMiscGUI()
         // Add some options to the combo box
         comboBox->addItem("50");
         comboBox->addItem("100");
-        comboBox->addItem("500");
+        comboBox->addItem("250");
         // Set the current index to the first option (optional)
         comboBox->setCurrentIndex(0);
         // Connect a slot to be called when the user selects an option
@@ -183,6 +180,7 @@ void clientgui::setupMiscGUI()
             QString topicToFloodString = topicToFloodEdit->text();
             client.pushMessage("flood>"+topicToFloodString + "[" + selectedOption);
             stringInputDialog->close();
+            showMiscMessage("Flooding " + topicToFloodString + " " + selectedOption + "times.");
         });
 
         // Create layout for string input dialog

@@ -10,7 +10,7 @@
 
 int main(int argc, char *argv[])
 {
-    srand(time(NULL)); // sets the seed value based on current time
+    srand(time(NULL));
 
     QApplication app(argc, argv);
 

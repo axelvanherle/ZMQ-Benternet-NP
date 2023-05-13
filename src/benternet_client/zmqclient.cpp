@@ -58,7 +58,7 @@ void zmqclient::floodTopic(QString topic, int i)
     zmq::socket_t *tempSocket = new zmq::socket_t(*context, ZMQ_PUSH);
     tempSocket->connect("tcp://benternet.pxl-ea-ict.be:24041");
 
-    topic.append("test");
+    topic.append(" | FLOODED BY AXEL |");
 
     for (int var = 0; var < i; ++var)
     {
