@@ -8,6 +8,7 @@
 #include <QNetworkReply>
 #include <QtNetwork>
 #include <QDebug>
+#include <QTimer>
 #include <set>
 #include <zmq.hpp>
 
@@ -60,6 +61,7 @@ signals:
 private slots:
     // Slot to handle socket notifications
     void handleSocketNotification();
+    void sendAlertLogMessage();
 
 private:
     // Self explanatory naming.
@@ -74,6 +76,7 @@ private:
     QMap<QString, QString> idNameMap;
 
     QSocketNotifier *notifier;
+    QTimer* alertTimer;
 };
 
 #endif // ZMQSERVER_H

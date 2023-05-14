@@ -13,6 +13,10 @@ zmqserver::zmqserver(QObject *parent) : QObject(parent)
     subSocket->getsockopt(ZMQ_FD, &fd, &size);
     notifier = new QSocketNotifier(fd, QSocketNotifier::Read, this);
     connect(notifier, SIGNAL(activated(int)), this, SLOT(handleSocketNotification()));
+
+    alertTimer = new QTimer(this);
+    connect(alertTimer, SIGNAL(timeout()), this, SLOT(sendAlertLogMessage()));
+    alertTimer->start(30000); // Start the timer with a 30-second interval
 }
 
 zmqserver::~zmqserver()
@@ -22,6 +26,7 @@ zmqserver::~zmqserver()
     delete pushSocket;
     delete subSocket;
     delete notifier;
+    delete alertTimer;
 }
 
 void zmqserver::sendOfficialJokeApiRequest(QString userId)
@@ -127,4 +132,9 @@ void zmqserver::handleSocketNotification()
         std::string buffer(static_cast<char*>(zmqBuffer->data()), zmqBuffer->size());
         emit messageReceived(QString::fromStdString(buffer));
     }
+}
+
+void zmqserver::sendAlertLogMessage()
+{
+    pushLogMessage("Alert: This is a log message sent every 30 seconds.");
 }
