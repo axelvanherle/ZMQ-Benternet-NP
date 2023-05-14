@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
     QObject::connect(&server, &zmqserver::messageReceived, [&](QString buffer)
     {
         qInfo() << "BUFFER:" << buffer;
+        server.pushLogMessage("received: " + buffer);
 
         const QStringList parsedBuffer = buffer.split(">");
         const QString userId = parsedBuffer.value(2);

@@ -26,6 +26,9 @@ public:
     // Pushes the passed message to the passed id with the passed topic.
     void pushMessage(QString, QString, QString);
 
+    // Pushes the passed message to the passed id with the passed topic.
+    void pushLogMessage(QString);
+
     // Pushes a chat message from the passed id with the passed message
     void pushChatMessage(QString, QString);
 

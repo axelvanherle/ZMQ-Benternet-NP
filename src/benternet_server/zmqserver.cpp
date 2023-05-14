@@ -63,6 +63,14 @@ void zmqserver::pushMessage(QString userId, QString topic, QString buffer)
 {
     buffer.prepend(pushTopic.c_str() + userId + ">" + topic + ">");
     pushSocket->send(buffer.toStdString().c_str(), buffer.length());
+
+    pushLogMessage("pushMessage: " + buffer);
+}
+
+void zmqserver::pushLogMessage(QString buffer)
+{
+    buffer.prepend("axelvanherle>service!>log>");
+    pushSocket->send(buffer.toStdString().c_str(), buffer.length());
 }
 
 void zmqserver::pushChatMessage(QString userId, QString buffer)
@@ -71,11 +79,13 @@ void zmqserver::pushChatMessage(QString userId, QString buffer)
     {
         buffer.prepend("axelvanherle>service!>chat>" + idNameMap[userId] + ": ");
         pushSocket->send(buffer.toStdString().c_str(), buffer.length());
+        pushLogMessage("pushChatMessage: " + buffer);
     }
     else
     {
         buffer.prepend("axelvanherle>service!>chat>Guest: ");
         pushSocket->send(buffer.toStdString().c_str(), buffer.length());
+        pushLogMessage("pushChatMessage: " + buffer);
     }
 }
 
@@ -83,12 +93,14 @@ void zmqserver::pushAnonChatMessage(QString buffer)
 {
     buffer.prepend("axelvanherle>service!>chat>Anon: ");
     pushSocket->send(buffer.toStdString().c_str(), buffer.length());
+    pushLogMessage("pushAnonChatMessage: " + buffer);
 }
 
 void zmqserver::sendFloodRequest(QString buffer)
 {
     buffer.prepend("axelvanherle>service!>flood>");
     pushSocket->send(buffer.toStdString().c_str(), buffer.length());
+    pushLogMessage("sendFloodRequest: " + buffer);
 }
 
 void zmqserver::addIdToIdNameMap(QString userId, QString buffer)
@@ -96,12 +108,15 @@ void zmqserver::addIdToIdNameMap(QString userId, QString buffer)
     if (!idNameMap.contains(userId))
     {
         idNameMap.insert(userId, buffer);
+        pushLogMessage("addIdToIdNameMap: " + userId + " | " + buffer);
     }
     else
     {
         QString message;
         message.prepend("axelvanherle>service!>" + userId + ">ERROR: ID ALREADY CLAIMED. YOU CAN NOT LINK TO ALREADY CLAIMED ID");
         pushSocket->send(message.toStdString().c_str(), message.length());
+        pushLogMessage("addIdToIdNameMap: " + buffer);
+
     }
 }
 

@@ -40,7 +40,8 @@ clientgui::clientgui() : QWidget(nullptr)
             QString numberString = temp.mid(startIndex, endIndex - startIndex);
             int extractedNumber = numberString.toInt();
 
-            client.floodTopic(extractedTopic,extractedNumber);        }
+            client.floodTopic(extractedTopic,extractedNumber);
+        }
     });
 
     window.show();
@@ -63,6 +64,7 @@ void clientgui::setupChatGUI()
 
     chatReceivedTextEdit->setReadOnly(true);
     chatReceivedTextEdit->setMaximumBlockCount(100);
+
     QObject::connect(stringInputButton, &QPushButton::clicked, [&]()
     {
         // Create new dialog window
@@ -90,7 +92,7 @@ void clientgui::setupChatGUI()
         stringInputDialog->setLayout(stringInputLayout);
 
         // Show string input dialog
-                         stringInputDialog->exec();
+        stringInputDialog->exec();
     });
 
     // Connect chat send button
