@@ -36,10 +36,6 @@ jobs:
         cd
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
-      with:
-        host:         linux
-        target:       desktop
-        setup-python: false
     - name: Run qmake
       run: |
         mkdir src/build && cd src/build
