@@ -43,7 +43,7 @@ jobs:
     - name: Run qmake
       run: |
         mkdir src/build && cd src/build
-        qmake "CONFIG+=static" -o Makefile ../benternet_client/benternet_client.pro
+        qmake -o Makefile ../benternet_client/benternet_client.pro
     - name: Run make
       run: cd src/build && make
     - uses: actions/upload-artifact@v3
