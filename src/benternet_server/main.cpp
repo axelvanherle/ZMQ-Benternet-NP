@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
         }
         else
         {
-            server.pushMessage(userId,"error","You did not enter a valid topic.");
+            server.pushMessage(userId,"error","1");
         }
     });
 

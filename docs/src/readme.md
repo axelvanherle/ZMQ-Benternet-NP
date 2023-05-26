@@ -6,6 +6,11 @@ In this readme you will learn how to utilize and interact with my service.
 |Chat|Allows users to send messages to a topic, which the service fowards to a topic, allowing everyone to see all chats.|
 |Joke|Allows users to request a joke.|
 
+## Error detection.
+To get errors you will need to generate a random ID. You can generate a ID using `(rand() % 100000)+1`. A practical example of this could be `playerID = std::to_string((rand() % 100000)+1);`. With this id you can subsribe to a error topic. This will look like `axelvanherle>service!>25369>error>` for example, where 25369 is going to be your randomly generated ID.
+
+Lets say you want to push a message for example but push to `chatt` instead of `chat`. In this case you will be receiving this message `axelvanherle>service!>25369>error>1`. This is so you can easily parse it. If you receive `1`, ya messed up.
+
 ## Chat Service
 A simple chat service, nothing more to it. Allows user to send a message, which the service forwards to all clients and or services connected.
 

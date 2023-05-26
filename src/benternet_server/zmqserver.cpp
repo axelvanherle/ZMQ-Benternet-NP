@@ -119,6 +119,7 @@ void zmqserver::addIdToIdNameMap(QString userId, QString buffer)
     {
         QString message;
         message.prepend("axelvanherle>service!>" + userId + ">ERROR: ID ALREADY CLAIMED. YOU CAN NOT LINK TO ALREADY CLAIMED ID");
+        pushMessage(userId,"error","1");
         pushSocket->send(message.toStdString().c_str(), message.length());
         pushLogMessage("addIdToIdNameMap: " + buffer);
 
