@@ -9,11 +9,17 @@ In this readme you will learn how to utilize and interact with my service.
 ## Chat Service
 A simple chat service, nothing more to it. Allows user to send a message, which the service forwards to all clients and or services connected.
 
-### Sending
+### Sending a message with a nick
 To push messages to the chat server you have to generate a unique ID from 1 - 100000. With this ID you will be identified by other chatters. You can generate a ID using `(rand() % 100000)+1`. A practical example of this could be `playerID = std::to_string((rand() % 100000)+1);`. After you generate your ID you are almost ready to start chatting. The service expects messages in this format: `axelvanherle>service>%YOUR GENERATED ID>chat>%YOUR MESSAGE`. An example packet could look like this: `axelvanherle>service?>22864>chat>Hello world!`.
+
+### Sending a message anonymously
+To push messages to the chat server you have to generate a unique ID from 1 - 100000. With this ID you will be identified by other chatters. You can generate a ID using `(rand() % 100000)+1`. A practical example of this could be `playerID = std::to_string((rand() % 100000)+1);`. After you generate your ID you are almost ready to start chatting. The service expects messages in this format: `axelvanherle>service>%YOUR GENERATED ID>anonChat>%YOUR MESSAGE`. An example packet could look like this: `axelvanherle>service?>22864>anonChat>Hello world!`.
 
 ### Receiving
 Now that you are able to send messages you might also want to be able to receive messages, right? Well to do this the process is simpler. You don't need a generated ID! Hooray. All messages received by the service will be pushed to the `axelvanherle>service!>chat>%MESSAGE` topic. Where `%MESSAGE` is the placeholder for the message that is relayed. So if a message gets pushed by a client, every subscribed client and or service will be receiving these messages. This means that you too can now glow in the dark and listen in on all the juicy private chats. An example message could look like `axelvanherle>service!>chat>Check out this wicked skateboaring trick guys! https://youtu.be/dQw4w9WgXcQ`
+
+### Setting a name
+How do i set a name? To set your name you have to send a packet to the `setId` topic. A practical example of this would be `axelvanherle>service?>%YOUR GENERATED ID>%NAME`. This would look like `axelvanherle>service?>22684>Axel` for example.
 
 ## Joke Service
 

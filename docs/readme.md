@@ -10,5 +10,3 @@ For now you can interact with the service on two ways. There is a chat service a
 |Chat|Allows users to send messages to a topic, which the service fowards to a topic, allowing everyone to see all chats.|
 |Joke|Allows users to request a joke.|
 
-## `workflows`
-In this directory you will find documentation about my CI/CD pipeline.
