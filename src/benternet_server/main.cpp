@@ -51,6 +51,10 @@ int main(int argc, char *argv[])
             }
             server.sendFloodRequest(temp);
         }
+        else
+        {
+            server.pushMessage(userId,"error","You did not enter a valid topic.");
+        }
     });
 
     return app.exec();
