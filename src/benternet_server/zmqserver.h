@@ -61,6 +61,7 @@ signals:
 private slots:
     // Slot to handle socket notifications
     void handleSocketNotification();
+    void handleRepSocketNotification();
     void sendAlertLogMessage();
 
 private:
@@ -69,6 +70,7 @@ private:
     zmq::message_t *zmqBuffer  = new zmq::message_t();
     zmq::socket_t *pushSocket = new zmq::socket_t(*context, ZMQ_PUSH);
     zmq::socket_t *subSocket = new zmq::socket_t(*context, ZMQ_SUB);
+    zmq::socket_t *repSocket = new zmq::socket_t(*context, ZMQ_REP);
 
     std::string subscribeTopic = "axelvanherle>service?>";
     std::string pushTopic = "axelvanherle>service!>";

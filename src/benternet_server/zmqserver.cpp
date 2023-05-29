@@ -14,6 +14,12 @@ zmqserver::zmqserver(QObject *parent) : QObject(parent)
     notifier = new QSocketNotifier(fd, QSocketNotifier::Read, this);
     connect(notifier, SIGNAL(activated(int)), this, SLOT(handleSocketNotification()));
 
+    repSocket->bind("tcp://127.0.0.1:5555");
+
+    repSocket->getsockopt(ZMQ_FD, &fd, &size);
+    QSocketNotifier *rep_notifier = new QSocketNotifier(fd, QSocketNotifier::Read, this);
+    connect(rep_notifier, SIGNAL(activated(int)), this, SLOT(handleRepSocketNotification()));
+
     alertTimer = new QTimer(this);
     connect(alertTimer, SIGNAL(timeout()), this, SLOT(sendAlertLogMessage()));
     alertTimer->start(30000); // Start the timer with a 30-second interval
@@ -25,6 +31,7 @@ zmqserver::~zmqserver()
     delete zmqBuffer;
     delete pushSocket;
     delete subSocket;
+    delete repSocket;
     delete notifier;
     delete alertTimer;
 }
@@ -134,6 +141,16 @@ void zmqserver::handleSocketNotification()
         emit messageReceived(QString::fromStdString(buffer));
     }
 }
+
+void zmqserver::handleRepSocketNotification()
+{
+    while (repSocket->recv(zmqBuffer, ZMQ_DONTWAIT))
+    {
+        std::string response = "We are alive!";
+        repSocket->send(response.c_str(), response.size());
+    }
+}
+
 
 void zmqserver::sendAlertLogMessage()
 {

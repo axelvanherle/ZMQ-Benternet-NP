@@ -76,3 +76,33 @@ void zmqclient::handleSocketNotification()
         emit messageReceived(QString::fromStdString(buffer));
     }
 }
+
+void zmqclient::sendOnlineCheck()
+{
+    zmq::socket_t *reqSocket = new zmq::socket_t(*context, ZMQ_REQ);
+    int timeout = 2000;
+    reqSocket->setsockopt(ZMQ_RCVTIMEO, &timeout, sizeof(timeout));
+    reqSocket->connect("tcp://localhost:5555");
+
+    try
+    {
+        reqSocket->send("axelvanherle>onlinecheck", strlen("axelvanherle>onlinecheck"));
+        bool success = reqSocket->recv(zmqBuffer);
+
+        if (success)
+        {
+            std::string buffer(static_cast<char*>(zmqBuffer->data()), zmqBuffer->size());
+            qDebug() << "Received reply: " << buffer.c_str();
+        }
+        else
+        {
+            qDebug() << "Request timeout";
+        }
+    }
+    catch (const zmq::error_t& e)
+    {
+        qDebug() << "Error occurred: " << e.what();
+    }
+
+    reqSocket->close();
+}

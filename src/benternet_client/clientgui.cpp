@@ -197,9 +197,15 @@ void clientgui::setupMiscGUI()
         stringInputDialog->exec();
     });
 
+    QObject::connect(onlineCheckButton, &QPushButton::clicked,[&]()
+    {
+        client.sendOnlineCheck();
+    });
+
     // Create misc layout
     miscLayout->addWidget(jokeButton);
     miscLayout->addWidget(floodButton);
+    miscLayout->addWidget(onlineCheckButton);
     miscLayout->addWidget(miscOutputLabel);
     miscLayout->addWidget(miscReceivedTextEdit);
 

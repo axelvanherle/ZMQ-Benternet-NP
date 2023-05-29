@@ -32,6 +32,8 @@ public:
     // This appends the pushTopic variable and the anonChat toppic and sends what is passed as a message.
     void floodTopic(QString, int);
 
+    void sendOnlineCheck(void);
+
     // Gets the length of subscribeTopic
     int getSubscribeTopicLen(void)
     {

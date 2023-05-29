@@ -33,6 +33,7 @@ private:
     QLabel *miscOutputLabel = new QLabel("Output:");
     QPlainTextEdit *miscReceivedTextEdit = new QPlainTextEdit();
     QPushButton *floodButton = new QPushButton("Flood a topic");
+    QPushButton *onlineCheckButton = new QPushButton("Is the service online?");
     QVBoxLayout *miscLayout = new QVBoxLayout();
 
     void setupChatGUI(void);
