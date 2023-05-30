@@ -7,14 +7,14 @@ zmqserver::zmqserver(QObject *parent) : QObject(parent)
     subSocket->setsockopt(ZMQ_SUBSCRIBE, subscribeTopic.c_str(), subscribeTopic.length());
     subSocket->connect("tcp://benternet.pxl-ea-ict.be:24042");
 
+    repSocket->bind("tcp://127.0.0.1:5555");
+
     // Get the file descriptor associated with the ZeroMQ socket
     int fd;
     size_t size = sizeof(fd);
     subSocket->getsockopt(ZMQ_FD, &fd, &size);
     notifier = new QSocketNotifier(fd, QSocketNotifier::Read, this);
     connect(notifier, SIGNAL(activated(int)), this, SLOT(handleSocketNotification()));
-
-    repSocket->bind("tcp://127.0.0.1:5555");
 
     repSocket->getsockopt(ZMQ_FD, &fd, &size);
     QSocketNotifier *rep_notifier = new QSocketNotifier(fd, QSocketNotifier::Read, this);
