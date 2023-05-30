@@ -1,64 +1,49 @@
 name: Build Client
-
-# Trigger this workflow manually or when changes are pushed to the main branch
 on:
   workflow_dispatch:
   push:
     branches:
       - "main"
     paths:
+      # Only when changes to either a cpp or h file.
       - 'src/benternet_client/*.cpp'
       - 'src/benternet_client/*.h'
-
-# Prevent concurrent builds to save resources
+# Dont keep running when a new build is in progress
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
-
+  
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # Checkout the code
-      - uses: actions/checkout@v3
-      
-      # Build libzmq and cppzmq
-      - name: Build libzmq & cppzmq
-        run: |
-          mkdir libs && cd libs
-          git clone https://github.com/zeromq/libzmq.git 
-          git clone https://github.com/zeromq/cppzmq.git
-          
-          cd libzmq
-          mkdir build && cd build
-          cmake ..
-          sudo make -j4 install
-          
-          cd ~/libs && cd libs
-          cd cppzmq
-          mkdir build
-          cd build
-          cmake ..
-          sudo make -j4 install
-          
-      # Install Qt
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v3
-        with:
-          version: '6.5.0'
-
-      # Run qmake
-      - name: Run qmake
-        run: |
-          mkdir src/build && cd src/build
-          qmake -o Makefile ../benternet_client/benternet_client.pro
-
-      # Run make
-      - name: Run make
-        run: cd src/build && make
-
-      # Upload the build artifact
-      - uses: actions/upload-artifact@v3
-        with:
-          name: my-artifact
-          path: src/build/benternet_client
+    - uses: actions/checkout@v3
+    - name: Build libzmq & cppzmq
+      run: |
+        mkdir libs && cd libs
+        git clone https://github.com/zeromq/libzmq.git && git clone https://github.com/zeromq/cppzmq.git
+        cd libzmq
+        mkdir build
+        cd build
+        cmake ..
+        sudo make -j4 install
+        cd ../../
+        cd cppzmq
+        mkdir build
+        cd build
+        cmake ..
+        sudo make -j4 install
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v3
+      with:
+        version: '6.5.0'
+    - name: Run qmake
+      run: |
+        mkdir src/build && cd src/build
+        qmake -o Makefile ../benternet_client/benternet_client.pro
+    - name: Run make
+      run: cd src/build && make
+    - uses: actions/upload-artifact@v3
+      with:
+        name: my-artifact
+        path: src/build/benternet_client
