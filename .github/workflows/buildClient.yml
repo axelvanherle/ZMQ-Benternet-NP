@@ -34,7 +34,7 @@ jobs:
           cmake ..
           sudo make -j4 install
           
-          cd ~ && cd libs
+          cd ~/libs && cd libs
           cd cppzmq
           mkdir build
           cd build
