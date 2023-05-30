@@ -562,3 +562,358 @@ Message 2
 Message 3
 Message 4
 Message 5
+!hey
+LoreHammer?>bob>dice>2
+LoreHammer!>bob>Dice>
+2
+LoreHammer!>bob>Dice>
+1
+LoreHammer?>bob>dice>8
+LoreHammer!>bob>Dice>
+8
+#hey
+LoreHammer!>bob>Dice>
+7
+LoreHammer!>bob>Dice>
+6
+LoreHammer?>doe>lore
+LoreHammer!>doe>Lore
+
+The categories are Loyal, Traitor and Alpha Legion
+
+To see each individual list, send:
+
+LoreHammer?>doe>(Loyal/L)or(Traitor/T)or(Alpha Legion/@) list
+LoreHammer!>bob>Dice>
+LoreHammer!>doe>Lore
+test>theoasis>theoasis>blackjack!>Brent>true>hearts,9>9>clubs,10,clubs,7>17>0>
+LoreHammer?>dog>lore
+theoasis>help?>
+theoasis>log!>received>[theoasis>help?>]>
+theoasis>help!>
+>>> The Oasis: Help <<<
+
+Welcome To The Oasis!
+
+The Oasis is a virtual casino. Players have an account that stores the amount of credits they have. Everyone starts with 1000 credits. The available games are slotmachines, roulette, Blackjack and Cho-Han. For more information on a specific part of The Oasis, send the following: 'theoasis>info?>'. To know which requests you can make, checkout the documentation on the Github repository: https://github.com/BrentGG/NP-ZMQ.
+Have fun!
+
+
+theoasis>log!>sent>[theoasis>help!>
+>>> The Oasis: Help <<<
+
+Welcome To The Oasis!
+
+The Oasis is a virtual casino. Players have an account that stores the amount of credits they have. Everyone starts with 1000 credits. The available games are slotmachines, roulette, Blackjack and Cho-Han. For more information on a specific part of The Oasis, send the following: 'theoasis>info?>'. To know which requests you can make, checkout the documentation on the Github repository: https://github.com/BrentGG/NP-ZMQ.
+Have fun!
+
+]>
+LoreHammer?>bob>lore
+theoasis>info?>slotmachine>
+theoasis>log!>received>[theoasis>info?>slotmachine>]>
+theoasis>info!>slotmachine>
+>>> The Oasis: Slotmachines Info <<<
+
+The slot machines are three-reel, single-payline slot machines. This means that there are three symbols that appear when the slot machine is spun, and these three symbols determine the payout. The payouts are as follows (multiplied by the bet):
+Combination              Payout
+Three Bar                5000
+Three Cherry             1000
+Three Plum               200
+Three Watermelon         100
+Three Orange             50
+Thee Lemon               25
+Two Cherry (in a row)    10
+One Cherry               2
+Any other                0
+    
+theoasis>log!>sent>[theoasis>info!>slotmachine>
+>>> The Oasis: Slotmachines Info <<<
+
+The slot machines are three-reel, single-payline slot machines. This means that there are three symbols that appear when the slot machine is spun, and these three symbols determine the payout. The payouts are as follows (multiplied by the bet):
+Combination              Payout
+Three Bar                5000
+Three Cherry             1000
+Three Plum               200
+Three Watermelon         100
+Three Orange             50
+Thee Lemon               25
+Two Cherry (in a row)    10
+One Cherry               2
+Any other                0
+    ]>
+LoreHammer?>bob>dice>5
+theoasis>info?>roulette>
+theoasis>log!>received>[theoasis>info?>roulette>]>
+theoasis>info!>roulette>
+>>> The Oasis: Roulette Info <<<
+
+The roulette wheels are American, double-zero roulette wheels. This means the numbers on the wheel are 0-36 and 00.Below are the possible bets, what they mean, and what their payouts are. The payout should be multiplied by the bet.If the description starts with 'any', you must specify in the request which numbers you choose.
+Bet Name                 Payout   Description
+zero                     36       0
+double zero              36       00
+straight up              36       any number (1-36)
+row                      18       0, 00
+split                    18       any two adjacent numbers (1-36), e.g.: 1,2 or 11,14
+street                   12       any three numbers horizontal (1-36), e.g.: 1,2,3 or 4,5,6 or 34,35,36
+corner                   9        any four adjoining numbers in a block, e.g.: 4,5,7,8
+basket                   7        0, 00, 1, 2, 3
+double street            6        any two streets, e.g.: 1,2,3,34,35,36
+first column             3        1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34
+second column            3        2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35
+third column             3        3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36
+first dozen              3        1 to 12
+second dozen             3        13 to 24
+third dozen              3        25 to 36
+odd                      2        odd numbers
+even                     2        even numbers
+red                      2        red numbers
+black                    2        black numbers
+one to eighteen          2        1 to 18
+nineteen to thirty-six   2        19 to 36
+    
+theoasis>log!>sent>[theoasis>info!>roulette>
+>>> The Oasis: Roulette Info <<<
+
+The roulette wheels are American, double-zero roulette wheels. This means the numbers on the wheel are 0-36 and 00.Below are the possible bets, what they mean, and what their payouts are. The payout should be multiplied by the bet.If the description starts with 'any', you must specify in the request which numbers you choose.
+Bet Name                 Payout   Description
+zero                     36       0
+double zero              36       00
+straight up              36       any number (1-36)
+row                      18       0, 00
+split                    18       any two adjacent numbers (1-36), e.g.: 1,2 or 11,14
+street                   12       any three numbers horizontal (1-36), e.g.: 1,2,3 or 4,5,6 or 34,35,36
+corner                   9        any four adjoining numbers in a block, e.g.: 4,5,7,8
+basket                   7        0, 00, 1, 2, 3
+double street            6        any two streets, e.g.: 1,2,3,34,35,36
+first column             3        1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34
+second column            3        2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35
+third column             3        3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36
+first dozen              3        1 to 12
+second dozen             3        13 to 24
+third dozen              3        25 to 36
+odd                      2        odd numbers
+even                     2        even numbers
+red                      2        red numbers
+black                    2        black numbers
+one to eighteen          2        1 to 18
+nineteen to thirty-six   2        19 to 36
+    ]>
+Sebbe>subbed>67
+Sebbe>pushed>67
+Sebbe>subbed>80
+Sebbe>pushed>80
+theoasis>info?>blackjack>
+theoasis>log!>received>[theoasis>info?>blackjack>]>
+theoasis>info!>blackjack>
+>>> The Oasis: Blackjack Info <<<
+
+The Blackjack game is an American style Blackjack game. You can hit, stand, split, double and insure. When doubling down, the bet is doubled. When insuring, half of the bet is played for the insurance. If the dealer has Blackjack and the player has insured, the player receives 2 * insurance bet. The Blackjack game is peristent, meaning that the player sits at the same table (playing with the same shoe), until they leave. The payouts are as follows (multiplied by the bet):
+Result              Payout
+Player Blackjack    2.5
+Player wins         2
+Push                1
+Dealer wins         0
+    
+theoasis>log!>sent>[theoasis>info!>blackjack>
+>>> The Oasis: Blackjack Info <<<
+
+The Blackjack game is an American style Blackjack game. You can hit, stand, split, double and insure. When doubling down, the bet is doubled. When insuring, half of the bet is played for the insurance. If the dealer has Blackjack and the player has insured, the player receives 2 * insurance bet. The Blackjack game is peristent, meaning that the player sits at the same table (playing with the same shoe), until they leave. The payouts are as follows (multiplied by the bet):
+Result              Payout
+Player Blackjack    2.5
+Player wins         2
+Push                1
+Dealer wins         0
+    ]>
+Sebbe>subbed>94
+Sebbe>pushed>94
+Sebbe>subbed>48
+Sebbe>pushed>48
+theoasis>info?>cho-han>
+theoasis>log!>received>[theoasis>info?>cho-han>]>
+theoasis>info!>cho-han>
+>>> The Oasis: Cho-Han Info <<<
+
+Cho-Han is a simple Japanese gambling game played with two standard six-sided dice. Before rolling the dice, call out 'even' or 'odd'. If the sum of the dice is even and you called even or the sum is odd and you called odd, you win. Otherwise, you lose. Below are the payouts (multiplied by the bet).
+Situation     Payout
+Win           2
+Loss          0
+    
+theoasis>log!>sent>[theoasis>info!>cho-han>
+>>> The Oasis: Cho-Han Info <<<
+
+Cho-Han is a simple Japanese gambling game played with two standard six-sided dice. Before rolling the dice, call out 'even' or 'odd'. If the sum of the dice is even and you called even or the sum is odd and you called odd, you win. Otherwise, you lose. Below are the payouts (multiplied by the bet).
+Situation     Payout
+Win           2
+Loss          0
+    ]>
+Sebbe>subbed>84
+Sebbe>pushed>84
+Sebbe>subbed>95
+Sebbe>pushed>95
+Sebbe>subbed>87
+Sebbe>pushed>87
+theoasis>logout?>>>
+Sebbe>subbed>81
+theoasis>log!>received>[theoasis>logout?>>>]>
+theoasis>logout!>>false>Not logged in.>
+theoasis>log!>sent>[theoasis>logout!>>false>Not logged in.>]>
+Sebbe>pushed>81
+Sebbe>subbed>82
+Sebbe>pushed>82
+Sebbe>subbed>46
+Sebbe>pushed>46
+Sebbe>subbed>14
+Sebbe>pushed>14
+Sebbe>subbed>63
+Sebbe>pushed>63
+Sebbe>subbed>52
+Sebbe>pushed>52
+Sebbe>subbed>76
+Sebbe>pushed>76
+Sebbe>subbed>36
+Sebbe>pushed>36
+Sebbe>subbed>38
+Sebbe>pushed>38
+Sebbe>subbed>72
+Sebbe>pushed>72
+Sebbe>subbed>99
+Sebbe>pushed>99
+Sebbe>subbed>31
+Sebbe>pushed>31
+Sebbe>subbed>33
+Sebbe>pushed>33
+LoreHammer?>doe>help
+LoreHammer!>doe>Help
+
+For Rolling Dice, send:
+Dice # for rolling a dice between 0 and #
+
+For a list of the main Lore categories about Warhammer, send:
+Lore
+LoreHammer?>doe>dice>2
+LoreHammer!>doe>Dice>
+1
+LoreHammer!>doe>Dice>
+2
+LoreHammer?>fock>help
+LoreHammer!>fock>Help
+
+For Rolling Dice, send:
+Dice # for rolling a dice between 0 and #
+
+For a list of the main Lore categories about Warhammer, send:
+Lore
+LoreHammer?>fock>dice>8
+LoreHammer!>fock>Dice>
+7
+LoreHammer?>fock>dice>88
+LoreHammer!>fock>Dice>
+25
+LoreHammer!>fock>Dice>
+28
+LoreHammer!>fock>Dice>
+31
+LoreHammer!>fock>Dice>
+35
+LoreHammer!>fock>Dice>
+41
+LoreHammer?>fock>lore
+LoreHammer!>fock>Lore
+
+The categories are Loyal, Traitor and Alpha Legion
+
+To see each individual list, send:
+
+LoreHammer?>fock>(Loyal/L)or(Traitor/T)or(Alpha Legion/@) list
+LoreHammer?>bob>dice>95
+LoreHammer!>bob>Dice>
+20
+LoreHammer!>bob>Dice>
+23
+LoreHammer!>bob>Dice>
+30
+LoreHammer!>bob>Dice>
+33
+LoreHammer!>bob>Dice>
+36
+LoreHammer!>bob>Dice>
+40
+LoreHammer!>bob>Dice>
+46
+LoreHammer!>bob>Dice>
+49
+LoreHammer!>bob>Dice>
+56
+LoreHammer!>bob>Dice>
+66
+LoreHammer!>bob>Dice>
+76
+LoreHammer!>bob>Dice>
+79
+LoreHammer!>bob>Dice>
+82
+LoreHammer!>bob>Dice>
+85
+LoreHammer!>bob>Dice>
+89
+LoreHammer!>bob>Dice>
+10
+LoreHammer!>bob>Dice>
+13
+LoreHammer!>bob>Dice>
+16
+LoreHammer!>bob>Dice>
+26
+LoreHammer!>bob>Dice>
+43
+LoreHammer!>bob>Dice>
+3
+LoreHammer!>bob>Dice>
+5
+LoreHammer!>bob>Dice>
+4
+LoreHammer!>bob>Lore
+
+The categories are Loyal, Traitor and Alpha Legion
+
+To see each individual list, send:
+
+LoreHammer?>bob>(Loyal/L)or(Traitor/T)or(Alpha Legion/@) list
+LoreHammer?>bob>L
+axelvanherle>service!>log>test[0]
+LoreHammer?>bob>list L
+LoreHammer!>bob>L>
+Adeptus custodes
+Adeptus mechanicus
+Adeptus sororitas
+Assasins
+Astartes/SpaceMarines
+Astra Militarum/Imperial Guard
+Collegia titanica
+Imperial Guard Notable Characters
+Imperial Guard Regiments
+Imperial Knights
+SpaceMarines Legions
+SpaceMarines Notable Characters
+SpaceMarines Primarchs
+Suprise me
+The God Emperor of Mankind
+The Inquisition
+LoreHammer?>bob>list T
+LoreHammer!>bob>T>
+Chaos Demons
+Chaos Gods
+Chaos SpaceMarine
+Chaos SpaceMarine Legions
+Chaos SpaceMarine Notable Characters
+Chaos SpaceMarine Primarchs
+Dark Mechanicum
+Suprise me
+Traitor Guard
+Traitor Guard Notable Characters
+Traitor Guard Regiments
+LoreHammer?>bob>list @
+LoreHammer!>bob>@>
+Notable Characters
+Primarchs
+Suprise you!
