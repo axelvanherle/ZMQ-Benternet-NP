@@ -1,0 +1,505 @@
+RandomTeamGenerator>Names?>dzdzdzd,zd,zd,z,dzdzdz>
+RandomTeamGenerator>Key?>29063>
+RandomTeamGenerator>Team_Balance!>Unbalanced>
+RandomTeamGenerator>Names!>Team_1:dzdzdz>
+RandomTeamGenerator>Names!>Team_1:z>
+RandomTeamGenerator>Names!>Team_1:zd>
+RandomTeamGenerator>Names!>Team_2:dzdzdzd>
+RandomTeamGenerator>Names!>Team_2:zd>
+RandomTeamGenerator>Key!>29063>
+theoasis>login?>Brent>12345>
+theoasis>log!>received>[theoasis>login?>Brent>12345>]>
+theoasis>login!>Brent>true>Successfully logged in! Welcome back to The Oasis!>
+theoasis>log!>sent>[theoasis>login!>Brent>true>Successfully logged in! Welcome back to The Oasis!>]>
+theoasis>balance?>Brent>
+theoasis>log!>received>[theoasis>balance?>Brent>]>
+theoasis>balance!>Brent>true>4850>
+theoasis>log!>sent>[theoasis>balance!>Brent>true>4850>]>
+LoreHammer?>bob>help
+RandomTeamGenerator>Teams?>4>
+RandomTeamGenerator>Key?>29099>
+RandomTeamGenerator>Teams!>number_of_teams_4>
+RandomTeamGenerator>Key!>29099>
+RandomTeamGenerator>Names?> dzdzdzd,zd,zd,z,dzdzdz>
+RandomTeamGenerator>Key?>29132>
+RandomTeamGenerator>Team_Balance!>Unbalanced>
+RandomTeamGenerator>Names!>Team_1: dzdzdzd>
+RandomTeamGenerator>Names!>Team_1:zd>
+RandomTeamGenerator>Names!>Team_2:z>
+RandomTeamGenerator>Names!>Team_3:zd>
+RandomTeamGenerator>Names!>Team_4:dzdzdz>
+RandomTeamGenerator>Key!>29132>
+theoasis>heartbeat!>Tue May 30 23:01:41 2023>1>
+LoreHammer?>Thibault>help
+RandomTeamGenerator>Hello?>Hello>
+RandomTeamGenerator>Key?>29171>
+RandomTeamGenerator>Wrong_Command!>
+RandomTeamGenerator>Key!>29171>
+theoasis>blackjack?>Brent>leave>
+theoasis>log!>received>[theoasis>blackjack?>Brent>leave>]>
+theoasis>blackjack!>Brent>true>Left the Blackjack game.>
+theoasis>log!>sent>[theoasis>blackjack!>Brent>true>Left the Blackjack game.>]>
+theoasis>heartbeat!>Tue May 30 23:02:11 2023>1>
+RandomTeamGenerator>Hello?>Hello>
+RandomTeamGenerator>Key?>29194>
+RandomTeamGenerator>Wrong_Command!>
+RandomTeamGenerator>Key!>29194>
+RandomTeamGenerator>Hello?>Hello>
+RandomTeamGenerator>Key?>29292>
+RandomTeamGenerator>Wrong_Command!>
+RandomTeamGenerator>Key!>29292>
+RandomTeamGenerator>Hello?>Hello>
+RandomTeamGenerator>Key?>29324>
+RandomTeamGenerator>Wrong_Command!>
+RandomTeamGenerator>Key!>29324>
+theoasis>heartbeat!>Tue May 30 23:02:41 2023>1>
+theoasis>login?>Brent>12345>
+theoasis>log!>received>[theoasis>login?>Brent>12345>]>
+theoasis>login!>Brent>true>Already logged in.>
+theoasis>log!>sent>[theoasis>login!>Brent>true>Already logged in.>]>
+theoasis>balance?>Brent>
+theoasis>log!>received>[theoasis>balance?>Brent>]>
+theoasis>balance!>Brent>true>4850>
+theoasis>log!>sent>[theoasis>balance!>Brent>true>4850>]>
+theoasis>cho-han?>Brent>50>even>
+theoasis>log!>received>[theoasis>cho-han?>Brent>50>even>]>
+theoasis>cho-han!>Brent>true>4,5,>0>You lost!>
+theoasis>log!>sent>[theoasis>cho-han!>Brent>true>4,5,>0>You lost!>]>
+theoasis>balance?>Brent>
+theoasis>log!>received>[theoasis>balance?>Brent>]>
+theoasis>balance!>Brent>true>4800>
+theoasis>log!>sent>[theoasis>balance!>Brent>true>4800>]>
+Ruben>Service?>jz
+Ruben>Service!>gelieve ja of nee in te vullen
+Ruben>Service?>ja
+Ruben>Service!>hoeveel dagen wil je trainen?
+Ruben>Service?>6
+Ruben>Service!>Wilt u een schema ontvangen voor een zogenaamde push pull leg workout?
+Ruben>Service?>nee
+Ruben>Service!>wilt u opnieuw beginnen?
+Ruben>Service?>jaa
+Ruben>Service!>wilt u beginnen met trainen
+Ruben>Service?>ja
+Ruben>Service!>hoeveel dagen wil je trainen?
+Ruben>Service?>6
+Ruben>Service!>Wilt u een schema ontvangen voor een zogenaamde push pull leg workout?
+theoasis>heartbeat!>Tue May 30 23:03:11 2023>1>
+Ruben>Service?>ja
+Ruben>Service!>WorkOut
+PushPullLeg
+Dag1&5
+Exercise
+BenchPress
+InclineBenchPress
+ShoulderPress
+LateralRaises
+SkullCrushers
+TricepPushdown
+Dag2&6
+Exersice
+BarbellRow
+PullDown
+RearDelt
+SpiderCurls
+HammerCurls
+Dag3&7
+Squad
+HamstringCurl
+LegExtension
+CalfRaises
+Dag4
+Rest
+Ruben>Service?>restart
+Ruben>Service!>gelieve ja of nee in te vullen
+Ruben>Service?>ja
+Ruben>Service!>WorkOut
+PushPullLeg
+Dag1&5
+Exercise
+BenchPress
+InclineBenchPress
+ShoulderPress
+LateralRaises
+SkullCrushers
+TricepPushdown
+Dag2&6
+Exersice
+BarbellRow
+PullDown
+RearDelt
+SpiderCurls
+HammerCurls
+Dag3&7
+Squad
+HamstringCurl
+LegExtension
+CalfRaises
+Dag4
+Rest
+Ruben>Service?>ja
+Ruben>Service!>WorkOut
+PushPullLeg
+Dag1&5
+Exercise
+BenchPress
+InclineBenchPress
+ShoulderPress
+LateralRaises
+SkullCrushers
+TricepPushdown
+Dag2&6
+Exersice
+BarbellRow
+PullDown
+RearDelt
+SpiderCurls
+HammerCurls
+Dag3&7
+Squad
+HamstringCurl
+LegExtension
+CalfRaises
+Dag4
+Rest
+Ruben>Service?>ja
+Ruben>Service!>WorkOut
+PushPullLeg
+Dag1&5
+Exercise
+BenchPress
+InclineBenchPress
+ShoulderPress
+LateralRaises
+SkullCrushers
+TricepPushdown
+Dag2&6
+Exersice
+BarbellRow
+PullDown
+RearDelt
+SpiderCurls
+HammerCurls
+Dag3&7
+Squad
+HamstringCurl
+LegExtension
+CalfRaises
+Dag4
+Rest
+theoasis>heartbeat!>Tue May 30 23:03:41 2023>1>
+Ruben>Service?>nee
+Ruben>Service!>wilt u opnieuw beginnen?
+RandomTeamGenerator>Names?>dzdz,dz,d,z,dz,dz>
+RandomTeamGenerator>Key?>29618>
+RandomTeamGenerator>Names!>Team_1:dz>
+RandomTeamGenerator>Names!>Team_2:dzdz>
+RandomTeamGenerator>Names!>Team_2:dz>
+RandomTeamGenerator>Names!>Team_3:d>
+RandomTeamGenerator>Names!>Team_4:z>
+RandomTeamGenerator>Key!>29618>
+RandomTeamGenerator>Key?>29680>
+RandomTeamGenerator>Key!>29680>
+Ruben>Service!>Gelieve 3,5 of 6 dagen in te vullen.
+RandomTeamGenerator>Key?>29733>
+RandomTeamGenerator>Key!>29733>
+theoasis>heartbeat!>Tue May 30 23:04:41 2023>1>
+RandomTeamGenerator>Key?>29765>
+RandomTeamGenerator>Key!>29765>
+Ruben>Service?>5
+Ruben>Service!>Wilt u een schema ontvangen voor een zogenaamde 5-day split?
+Ruben>Service!>WorkOut
+5DaySplit
+Dagen1&3
+BenchPress
+BarbellRow
+InclineDbPress
+Pulldown
+ShoulderPress
+ReardeltFlys
+Spidercurls
+SkullCrushers
+HammerCurls
+TricepPushdowndag2&4
+Squad
+LegPress
+LegExtenions
+LegCurls
+CalfRaises
+Day5
+MilitaryPress
+SpiderCurls
+TricepPushdown
+ShoulderPress
+HammerCurls
+SkullCrushers
+RearDeltFlyes
+Day6&7
+Rest
+
+RandomTeamGenerator>Key?>29834>
+RandomTeamGenerator>Key!>29834>
+theoasis>heartbeat!>Tue May 30 23:05:11 2023>1>
+RandomTeamGenerator>Key?>29853>
+RandomTeamGenerator>Key!>29853>
+RandomTeamGenerator>Names?>dzdzdzd,zd,zf,z,f,zf,zf,z,fz,fz,x,zfzf,xz,f,zf,z,fz,f,zf>
+RandomTeamGenerator>Key?>29899>
+RandomTeamGenerator>Names!>Team_1:zf>
+RandomTeamGenerator>Names!>Team_1:fz>
+RandomTeamGenerator>Names!>Team_1:f>
+RandomTeamGenerator>Names!>Team_2:zfzf>
+RandomTeamGenerator>Names!>Team_2:fz>
+RandomTeamGenerator>Names!>Team_2:zf>
+RandomTeamGenerator>Names!>Team_3:xz>
+RandomTeamGenerator>Names!>Team_3:f>
+RandomTeamGenerator>Names!>Team_3:z>
+RandomTeamGenerator>Names!>Team_4:dzdzdzd>
+RandomTeamGenerator>Names!>Team_4:x>
+RandomTeamGenerator>Names!>Team_4:zf>
+RandomTeamGenerator>Names!>Team_4:f>
+RandomTeamGenerator>Key!>29899>
+theoasis>heartbeat!>Tue May 30 23:05:41 2023>1>
+RandomTeamGenerator>Key?>29955>
+RandomTeamGenerator>Key!>29955>
+theoasis>heartbeat!>Tue May 30 23:06:11 2023>1>
+RandomTeamGenerator>Key?>30040>
+RandomTeamGenerator>Key!>30040>
+Ruben>Service?>mqlkdjf
+theoasis>logout?>Brent>12345>
+theoasis>log!>received>[theoasis>logout?>Brent>12345>]>
+theoasis>logout!>Brent>true>Successfully logged out, come back soon!
+theoasis>log!>sent>[theoasis>logout!>Brent>true>Successfully logged out, come back soon!]>
+RandomTeamGenerator>Names?>2>
+RandomTeamGenerator>Key?>30111>
+RandomTeamGenerator>Team_Balance!>More_teams_than_players>
+RandomTeamGenerator>Key!>30111>
+theoasis>heartbeat!>Tue May 30 23:06:41 2023>0>
+RandomTeamGenerator>Key?>30151>
+RandomTeamGenerator>Key!>30151>
+RandomTeamGenerator>Key?>30183>
+RandomTeamGenerator>Key!>30183>
+RandomTeamGenerator>Names?>fzfzff,zf,z,f,zf,zf,z,f,zfzf>
+RandomTeamGenerator>Key?>30200>
+RandomTeamGenerator>Names!>Team_1:zfzf>
+RandomTeamGenerator>Names!>Team_1:fzfzff>
+RandomTeamGenerator>Key!>30200>
+RandomTeamGenerator>Key?>30229>
+RandomTeamGenerator>Key!>30229>
+RandomTeamGenerator>Key?>30242>
+RandomTeamGenerator>Key!>30242>
+theoasis>heartbeat!>Tue May 30 23:07:11 2023>0>
+theoasis>heartbeat!>Tue May 30 23:07:41 2023>0>
+theoasis>heartbeat!>Tue May 30 23:15:11 2023>0>
+theoasis>heartbeat!>Tue May 30 23:15:41 2023>0>
+theoasis>heartbeat!>Tue May 30 23:16:11 2023>0>
+theoasis>heartbeat!>Tue May 30 23:16:41 2023>0>
+theoasis>heartbeat!>Tue May 30 23:17:11 2023>0>
+theoasis>heartbeat!>Tue May 30 23:17:41 2023>0>
+theoasis>blackjack!>Brent>false>Not logged in.>
+theoasis>log!>sent>[theoasis>blackjack!>Brent>false>Not logged in.>]>
+Ruben>Service!>Jammer, kom zeker nog eens terug!
+theoasis>heartbeat!>Tue May 30 23:18:11 2023>0>
+Ruben>Service!>Gelieve ja of nee in te vullen
+theoasis>balance!>Brent>false>Not logged in.>
+theoasis>log!>sent>[theoasis>balance!>Brent>false>Not logged in.>]>
+theoasis>heartbeat!>Tue May 30 23:18:41 2023>1>
+theoasis>cho-han!>Brent>true>2,4,>100>Congratulations, you won!>
+theoasis>log!>sent>[theoasis>cho-han!>Brent>true>2,4,>100>Congratulations, you won!>]>
+Ruben>Service!>WorkOut
+PushPullLeg
+Dag1&5
+Exercise
+BenchPress
+InclineBenchPress
+ShoulderPress
+LateralRaises
+SkullCrushers
+TricepPushdown
+Dag2&6
+Exersice
+BarbellRow
+PullDown
+RearDelt
+SpiderCurls
+HammerCurls
+Dag3&7
+Squad
+HamstringCurl
+LegExtension
+CalfRaises
+Dag4
+Rest
+theoasis>cho-han!>Brent>true>3,5,>100>Congratulations, you won!>
+theoasis>log!>sent>[theoasis>cho-han!>Brent>true>3,5,>100>Congratulations, you won!>]>
+theoasis>cho-han!>Brent>true>2,3,>0>You lost!>
+theoasis>log!>sent>[theoasis>cho-han!>Brent>true>2,3,>0>You lost!>]>
+theoasis>heartbeat!>Tue May 30 23:19:41 2023>1>
+theoasis>heartbeat!>Tue May 30 23:20:11 2023>1>
+theoasis>heartbeat!>Tue May 30 23:20:41 2023>1>
+theoasis>heartbeat!>Tue May 30 23:21:11 2023>1>
+theoasis>heartbeat!>Tue May 30 23:21:41 2023>1>
+theoasis>heartbeat!>Tue May 30 23:22:11 2023>1>
+theoasis>heartbeat!>Tue May 30 23:22:41 2023>1>
+LoreHammer!>bob>Help
+
+For Rolling Dice, send:
+Dice # for rolling a dice between 0 and #
+
+For a list of the main Lore categories about Warhammer, send:
+Lore
+LoreHammer!>Thibault>Help
+
+For Rolling Dice, send:
+Dice # for rolling a dice between 0 and #
+
+For a list of the main Lore categories about Warhammer, send:
+Lore
+Ruben>Service!>WorkOut
+5DaySplit
+Dagen1&3
+BenchPress
+BarbellRow
+InclineDbPress
+Pulldown
+ShoulderPress
+ReardeltFlys
+Spidercurls
+SkullCrushers
+HammerCurls
+TricepPushdowndag2&4
+Squad
+LegPress
+LegExtenions
+LegCurls
+CalfRaises
+Day5
+MilitaryPress
+SpiderCurls
+TricepPushdown
+ShoulderPress
+HammerCurls
+SkullCrushers
+RearDeltFlyes
+Day6&7
+Rest
+
+LoreHammer?>y>help
+LoreHammer!>y>Help
+
+For Rolling Dice, send:
+Dice # for rolling a dice between 0 and #
+
+For a list of the main Lore categories about Warhammer, send:
+Lore
+theoasis>cho-han!>Brent>true>2,6>100>Congratulations, you won!>
+theoasis>log!>sent>[theoasis>cho-han!>Brent>true>2,6>100>Congratulations, you won!>]>
+theoasis>cho-han!>Brent>true>3,4>0>You lost!>
+theoasis>log!>sent>[theoasis>cho-han!>Brent>true>3,4>0>You lost!>]>
+theoasis>heartbeat!>Tue May 30 23:25:23 2023>1>
+LoreHammer!>Thibault>Help
+LoreHammer!>y>Help
+theoasis>login?>brent>12345>
+Ruben>Service!>WorkOut
+PushPullLeg
+Dag1&5
+Exercise
+BenchPress
+InclineBenchPress
+ShoulderPress
+LateralRaises
+SkullCrushers
+TricepPushdown
+Dag2&6
+Exersice
+BarbellRow
+PullDown
+RearDelt
+SpiderCurls
+HammerCurls
+Dag3&7
+Squad
+HamstringCurl
+LegExtension
+CalfRaises
+Dag4
+Rest
+LoreHammer!>bob>Help
+theoasis>cho-han!>Brent>true>3,3>100>Congratulations, you won!>
+theoasis>log!>sent>[theoasis>cho-han!>Brent>true>3,3>100>Congratulations, you won!>]>
+theoasis>log!>received>[theoasis>login?>brent>12345>]>
+theoasis>login!>brent>false>Login failed, wrong username and/or password.>
+theoasis>log!>sent>[theoasis>login!>brent>false>Login failed, wrong username and/or password.>]>
+theoasis>logout!>Brent>false>Not logged in.>
+theoasis>log!>sent>[theoasis>logout!>Brent>false>Not logged in.>]>
+theoasis>cho-han!>Brent>true>4,4>100>Congratulations, you won!>
+theoasis>log!>sent>[theoasis>cho-han!>Brent>true>4,4>100>Congratulations, you won!>]>
+theoasis>balance!>Brent>true>4900>
+theoasis>log!>sent>[theoasis>balance!>Brent>true>4900>]>
+LoreHammer?>boby>help
+LoreHammer!>boby>Help
+
+For Rolling Dice, send:
+Dice # for rolling a dice between 0 and #
+
+For a list of the main Lore categories about Warhammer, send:
+Lore
+Ruben>Service!>workOut
+FullBody
+Dag1
+Squad
+BenchPress
+PullUp
+LegExtension
+MilitaryPress
+FacePulls
+TricepPushDown
+BicepCurl
+Day2
+Rest
+Day3
+Squad
+BenchPress
+BarbellRow
+LegCurl
+ShoulderPress
+SkullCrushers
+SpiderCurls
+day4
+Rest
+Day5
+Deadlift
+BenchPRess
+LegPress
+ShoulderPress
+ChestFly
+TricepPulldownHammerCurls
+day6&7
+Rest 
+LoreHammer!>boby>Help
+theoasis>login?>kenny>54321>
+theoasis>log!>received>[theoasis>login?>kenny>54321>]>
+theoasis>login!>kenny>false>Login failed, wrong username and/or password.>
+theoasis>log!>sent>[theoasis>login!>kenny>false>Login failed, wrong username and/or password.>]>
+theoasis>login?>Kenny>54321>
+theoasis>log!>received>[theoasis>login?>Kenny>54321>]>
+theoasis>login!>Kenny>true>Successfully logged in! Welcome back to The Oasis!>
+theoasis>log!>sent>[theoasis>login!>Kenny>true>Successfully logged in! Welcome back to The Oasis!>]>
+theoasis>login?>Tim>69420>
+theoasis>log!>received>[theoasis>login?>Tim>69420>]>
+theoasis>login!>Tim>true>Successfully logged in! Welcome back to The Oasis!>
+theoasis>log!>sent>[theoasis>login!>Tim>true>Successfully logged in! Welcome back to The Oasis!>]>
+LoreHammer?>jon>help
+LoreHammer!>jon>Help
+
+For Rolling Dice, send:
+Dice # for rolling a dice between 0 and #
+
+For a list of the main Lore categories about Warhammer, send:
+Lore
+LoreHammer?>jan>help
+LoreHammer!>jan>Help
+
+For Rolling Dice, send:
+Dice # for rolling a dice between 0 and #
+
+For a list of the main Lore categories about Warhammer, send:
+Lore
