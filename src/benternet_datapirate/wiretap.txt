@@ -503,3 +503,62 @@ Dice # for rolling a dice between 0 and #
 
 For a list of the main Lore categories about Warhammer, send:
 Lore
+theoasis>blackjack?>Brent>50>
+theoasis>log!>received>[theoasis>blackjack?>Brent>50>]>
+theoasis>blackjack!>Brent>true>diamonds,10>10>diamonds,Q,hearts,9>19>0>
+theoasis>log!>sent>[theoasis>blackjack!>Brent>true>diamonds,10>10>diamonds,Q,hearts,9>19>0>]>
+Gokspel
+hallo
+theoasis>blackjack?>Kenny>50>
+theoasis>log!>received>[theoasis>blackjack?>Kenny>50>]>
+theoasis>blackjack!>Kenny>true>hearts,3>3>spades,9,diamonds,4>13>0>
+theoasis>log!>sent>[theoasis>blackjack!>Kenny>true>hearts,3>3>spades,9,diamonds,4>13>0>]>
+theoasis>blackjack?>Kenny>hit>
+theoasis>log!>received>[theoasis>blackjack?>Kenny>hit>]>
+theoasis>blackjack!>Kenny>true>hearts,3,clubs,1,clubs,6>19>spades,9,diamonds,4,diamonds,9>22>1>0>Hand lost.>
+theoasis>log!>sent>[theoasis>blackjack!>Kenny>true>hearts,3,clubs,1,clubs,6>19>spades,9,diamonds,4,diamonds,9>22>1>0>Hand lost.>]>
+theoasis>heartbeat!>Tue May 30 23:32:12 2023>2>
+Ruben>Service!>workOut
+LoreHammer!>jan>Help
+LoreHammer!>jon>Help
+test>theoasis>theoasis>blackjack!>Brent>true>hearts,9>9>clubs,10,clubs,7>17>0>
+theoasis>log!>sent>[theoasis>blackjack!>Brent>true>hearts,9>9>clubs,10,clubs,7>17>0>]>
+theoasis>blackjack!>Kenny>true>diamonds,7>7>clubs,6,spades,6>12>0>
+theoasis>log!>sent>[theoasis>blackjack!>Kenny>true>diamonds,7>7>clubs,6,spades,6>12>0>]>
+theoasis>blackjack?>Kenny>leave>
+theoasis>log!>received>[theoasis>blackjack?>Kenny>leave>]>
+theoasis>blackjack!>Kenny>true>Left the Blackjack game.>
+theoasis>log!>sent>[theoasis>blackjack!>Kenny>true>Left the Blackjack game.>]>
+theoasis>login?>Brent>Gerets>
+theoasis>log!>received>[theoasis>login?>Brent>Gerets>]>
+theoasis>login!>Brent>false>Login failed, wrong username and/or password.>
+theoasis>log!>sent>[theoasis>login!>Brent>false>Login failed, wrong username and/or password.>]>
+theoasis>slotmachine?>Brent>50>
+theoasis>log!>received>[theoasis>slotmachine?>Brent>50>]>
+theoasis>slotmachine!>Brent>true>blank,blank,plum>0>You lost!>
+theoasis>log!>sent>[theoasis>slotmachine!>Brent>true>blank,blank,plum>0>You lost!>]>
+theoasis>balance!>Brent>true>4750>
+theoasis>log!>sent>[theoasis>balance!>Brent>true>4750>]>
+theoasis>roulette?>Brent>50>street>9,9,9>
+theoasis>log!>received>[theoasis>roulette?>Brent>50>street>9,9,9>]>
+theoasis>roulette!>Brent>false>Invalid bet numbers.>
+theoasis>log!>sent>[theoasis>roulette!>Brent>false>Invalid bet numbers.>]>
+theoasis>roulette?>Brent>50>street>1,2,3>
+theoasis>log!>received>[theoasis>roulette?>Brent>50>street>1,2,3>]>
+theoasis>roulette!>Brent>true>6>0>You lost!>
+theoasis>log!>sent>[theoasis>roulette!>Brent>true>6>0>You lost!>]>
+theoasis>balance!>Brent>true>4700>
+theoasis>log!>sent>[theoasis>balance!>Brent>true>4700>]>
+theoasis>blackjack!>Brent>true>hearts,Q>10>spades,1,clubs,Q>20>0>
+theoasis>log!>sent>[theoasis>blackjack!>Brent>true>hearts,Q>10>spades,1,clubs,Q>20>0>]>
+theoasis>blackjack?>Brent>stand>
+theoasis>log!>received>[theoasis>blackjack?>Brent>stand>]>
+theoasis>blackjack!>Brent>true>hearts,Q,clubs,8>18>spades,1,clubs,Q>20>1>100>Hand won!>
+theoasis>log!>sent>[theoasis>blackjack!>Brent>true>hearts,Q,clubs,8>18>spades,1,clubs,Q>20>1>100>Hand won!>]>
+theoasis>cho-han!>Brent>true>3,2>0>You lost!>
+theoasis>log!>sent>[theoasis>cho-han!>Brent>true>3,2>0>You lost!>]>
+Message 1
+Message 2
+Message 3
+Message 4
+Message 5

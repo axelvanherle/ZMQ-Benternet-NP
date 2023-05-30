@@ -27,4 +27,4 @@ while True:
     line = get_random_line("wiretap.txt")
     socket.send(line.encode())
 
-    time.sleep(0.1)
+    time.sleep(0.05)
