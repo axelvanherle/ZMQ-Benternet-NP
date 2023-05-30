@@ -11,6 +11,13 @@ print("|  |  |  |  ||   _|  -__||   _|  _  |  _  |             ")
 print("|________|__||__| |_____||____|___._|   __|             ")
 print("                                    |__|                ")
 
+userInput = input("Is there a specefic topic you want to subsribe on? Leave empty if you want to subsribe on all: ")
+
+if userInput:
+    print(f"Subscribing to {userInput}")
+else:
+    print("Subscribing to all topics")
+
 # Open the file
 file_obj = open("wiretap.txt", "w")
 
@@ -25,7 +32,7 @@ context = zmq.Context()
 subscriber = context.socket(zmq.SUB)
 
 # Set the socket options
-subscriber.setsockopt_string(zmq.SUBSCRIBE, "")
+subscriber.setsockopt_string(zmq.SUBSCRIBE, userInput)
 
 # Connect the subscriber to the specified IP and port
 subscriber.connect(f"{ip}:{port}")
