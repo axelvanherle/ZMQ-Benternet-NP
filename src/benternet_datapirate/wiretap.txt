@@ -917,3 +917,19 @@ LoreHammer!>bob>@>
 Notable Characters
 Primarchs
 Suprise you!
+Hello
+theoasis>slotmachine!>Brent>true>watermelon,orange,blank>0>You lost!>
+theoasis>log!>sent>[theoasis>slotmachine!>Brent>true>watermelon,orange,blank>0>You lost!>]>
+theoasis>balance!>Brent>true>4650>
+theoasis>log!>sent>[theoasis>balance!>Brent>true>4650>]>
+LoreHammer?>bob>l>Chaos Gods
+LoreHammer!>bob>L>Vox Communications error
+LoreHammer?>bob>l>Primachs
+LoreHammer?>bob>l>Primarchs
+25.000000 50.000000
+yesss
+LoreHammer?>bob>@>Primarchs
+LoreHammer!>bob>Wrong topic
+LoreHammer!>bob>@>Primarchs>Alpharius and his twin Omegon (sometimes referred to collectively as just 'Alpharius Omegon')
+yesss>Dice or cards
+Game>Dice or cards?
